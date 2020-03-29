@@ -1,0 +1,14 @@
+{ "compilerOptions":
+    { "allowJs" : false
+    , "allowSyntheticDefaultImports" : true
+    , "experimentalDecorators" : true
+    , "inlineSources" : true
+    , "jsx" : "react"
+    , "lib" : ["esnext", "dom"]
+    , "module" : "commonjs"
+    , "moduleResolution" : "node"
+    , "sourceMap" : true
+    , "strict" : false
+    , "target" : "es6"
+    , "types" : ["node"] } }
+  
