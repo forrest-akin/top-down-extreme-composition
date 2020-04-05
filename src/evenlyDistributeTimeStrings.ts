@@ -10,8 +10,7 @@ const parse = split( ' ' )
 
 const distributeDurationStrings : Unary< string[] , number[] > =
     durationStrings =>
-        distributeSeconds(
-            $length( durationStrings )
+        distributeSeconds( $length( durationStrings )
             , durationStringsToSeconds( durationStrings ) )
 
 const serialize = join( ' ' )
