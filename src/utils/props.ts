@@ -1,5 +1,13 @@
-import { prop } from './object.js'
+import  { prop } from './object.js'
 
 
-export const $length : < A >( x : { length : A } ) => A =
+const $length : < S extends Lengthwise >( x : S ) => number =
     prop( 'length' )
+
+
+export  { $length }
+
+
+interface Lengthwise {
+    length : number
+}
