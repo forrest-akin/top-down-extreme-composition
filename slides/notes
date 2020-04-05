@@ -1,18 +1,45 @@
 JS.LA PRESENTATION CONSIDERATIONS
 
-What did you want
-/ why did you want it
-/ what led to the creation of what you are demoing?
+What did you want?
+    I wanted expressive, declarative code with consistent reasonability and safe refactorability
 
-What did you do to get what you wanted
-/ what did you do to create your thing
-/ what went wrong
-/ what went right?
+Why did you want it?
+    I wanted the freedom to focus on the problem at hand without having to spend so much time
+    and energy trying to understand how existing code was working in order to safely modify it
+
+What led to the creation of what you are demoing?
+    frustration with the failure of conventional coding practices to achieve evolvability in software
+    
+What did you do to get what you wanted?
+    feeling that there must be a better way I found FP and fell in love with the expressivity and simplicity it achieved
+    the more I struggled with software at work the deeper I dove into FP and discovered how easily it solved
+    all the issues we struggled with at work
+
+What did you do to create your thing?
+    I constantly experiment with different ways to structure and format code
+    I love simple ideas that I can get a ton of mileage out of; ideally can be applied universally
+    I'm currently really in to maximizing purity and compositionality
+
+What went wrong?
+    Even though I had found a much more satisfactory way of thinking about software, I struggled to find an approach that
+    enabled me to focus on one thing at a time without related details leaking into and hogging precious mental resources
+
+What went right?
+    I started working at CJ Affiliate and immediately saw the impact top-down design could have on my ability to stay productive
+    while maintaing a high standard for code quality and test coverage
 
 What did you learn
-/ what happened that you didn't expect
-/ what would you change if you had to do it over again
-/ what would you tell someone attempting the same thing?
+    top-down design
+
+What happened that you didn't expect?
+    I realized top-down design paired perfectly with declarative, compositional programming
+
+What would you change if you had to do it over again?
+    I would've stopped worrying and just started writing tests sooner in my career
+
+What would you tell someone attempting the same thing?
+    Don't trust anyone! Listen to everyone and consider everything, but experiment a lot to figure out what you like and why.
+    Take things to their logical extremes to truly understand the limits and depths of their utility.
 
 Your talk should take no longer than 20 minutes; do practice and time yourself!
 
