@@ -55,18 +55,18 @@ const secondsToDurationString : Unary< number , string > =
     pipe( durationOfSeconds
         , durationToString )
 
-const distributeRemainder : CurriedEndo2< number > =
-    r => q =>
-        // if r > 0, add 1 to q and decrement r
-        // if r = 0, add 0 to q
-        add( q , r && ( --r , 1 ) )
-
 const distributeSeconds : Binary< number , number , number[] > =
     ( n , seconds ) => (
         // using IIFE to create internal state through function parameters instead of variables
         ( [ q , r ] = divmod( seconds , n ) ) =>
             map( distributeRemainder( r )
             )( repeat( q , n ) ) )()
+
+const distributeRemainder : CurriedEndo2< number > =
+    r => q =>
+        // if r > 0, add 1 to q and decrement r
+        // if r = 0, add 0 to q
+        add( q , r && ( --r , 1 ) )
 
 
 export  { distributeSeconds

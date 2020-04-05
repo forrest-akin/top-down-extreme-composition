@@ -1,65 +1,109 @@
-export const applyTo : < A , B >( x : A , f : ( x : A ) => B ) => B =
+const applyTo : < A , B >( x : A , f : Unary< A , B > ) => B =
     ( x , f ) => f( x )
 
-export const arity2 : < A , B , C >( f : ( x : A ) => ( y : B ) => C ) => ( x : A , y : B ) => C =
+const uncurry2 : < A , B , C >( f : Curried2< A , B , C > ) => Binary< A , B , C > =
     f => ( x , y ) => f( x )( y )
 
-export const flip =
+const flip : < A , B , C >( f : Curried2< A , B , C > ) => Curried2< B , A , C > =
     f => x => y =>
-        f( y , x )
+        f( y )( x )
 
-export const cardinal =
+const cardinal : < A , B , C , D >( f : Curried2< C , A , D > ) => Curried3< Unary< B , C > , A , B , D > =
     f => g => x => y =>
         f( g( y ) )( x )
 
-export const juxt =
+const juxt =
     ( ...fs ) => ( ...xs ) =>
-        fs.map( f => f( ...xs ) )
+        fs.map( spread( xs ) )
 
-export const pipe =
+const pipe =
     ( f , ...fs ) => ( ...xs ) =>
         fs.reduce( applyTo , f( ...xs ) )
 
-export const tap : < A >( x : A ) => A =
+const spread =
+    xs => f =>
+        f( ...xs )
+
+const tap : < A >( x : A ) => A =
     x =>
         ( console.log( x )
         , x )
 
-export const tapIn =
+const tapIn =
     ( f , label = f.name ) => ( ...args ) =>
         ( console.log( { [ `${label}::in` ] : args } )
         , f( ...args) )
 
-export const tapOut =
+const tapOut =
     ( f , label = f.name ) =>
         pipe( f
             , ( x : any ) =>
                 ( console.log( { [ `${label}::out` ] : x } )
                 , x ) )
 
-export const tapIO =
+const tapIO =
     ( f , label = f.name ) =>
         tapOut( tapIn( f , label ) , label )
 
-export const unfold : < A >( f : Predicate< A > ) => ( g : Endo< A > ) => ( x : A ) => A =
-    f => g => x => {
-        while ( f( x ) )
-            x = g( x )
-        return x
+const unfold : < A , B >( f : Predicate< B > , g : Endo< B > , h : Unary< A , B > ) => Unary< A , B > =
+    ( f , g , h ) => x => {
+        let y = h( x )
+        while ( f( y ) )
+            y = g( y )
+        return y
     }
 
-interface Predicate< A > {
+
+export  { applyTo
+        , cardinal
+        , flip
+        , juxt
+        , pipe
+        , spread
+        , tap
+        , tapIO
+        , tapIn
+        , tapOut
+        , uncurry2
+        , unfold }
+
+
+export interface Predicate< A > {
     ( x : A ) : boolean
 }
 
 export interface Folder< A , B > {
-    ( y : B , x : A ) : B
+    ( y : A , x : B ) : A
 }
 
-export interface Mapper< A , B > {
+export interface Unary< A , B > {
     ( x : A ) : B
+}
+
+export interface Binary< A , B , C > {
+    ( x : A , y : B ) : C
+}
+
+export interface Ternary< A , B , C , D > {
+    ( x : A , y : B , z : C ) : D
+}
+
+export interface Curried2< A , B , C > {
+    ( x : A ) : Unary< B , C >
+}
+
+export interface Curried3< A , B , C , D > {
+    ( x : A ) : Curried2< B , C , D >
 }
 
 export interface Endo< A > {
     ( x : A ) : A
+}
+
+export interface Endo2< A > {
+    ( x : A , y : A ) : A
+}
+
+export interface CurriedEndo2< A > {
+    ( x : A ): Endo< A >
 }

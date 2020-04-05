@@ -1,37 +1,49 @@
-import { tapIO , Folder , Mapper } from './function'
-import { $length } from './props'
+import  { Endo , Folder , Unary } from './function'
+import  { $length } from './props'
 
 
-export const concat : <A>( xs : A[] , ys : A[] ) => A[] =
+const concat : < A >( xs : A[] , ys : A[] ) => A[] =
     ( xs , ys ) =>
         xs.concat( ys )
 
-export const fill : <A>( x : A , xs : A[] ) => A[] =
+const fill : < A >( x : A , xs : A[] ) => A[] =
     ( filler , xs ) =>
         xs.fill( filler )
 
-export const join : ( x : string ) => <A>( xs : A[] ) => string =
+const join : < A >( x : string ) => Unary< A[] , string > =
     delimiter => xs =>
         xs.join( delimiter )
 
-export const map : < A , B >( f : Mapper< A , B > ) => ( xs : A[] ) => B[] =
+const map : < A , B >( f : Unary< A , B > ) => Unary< A[] , B[] > =
     f => xs =>
         xs.map( f )
 
-export const padLeft : < A >( n : number , x : A ) => ( xs : A[] ) => A[] =
+const padLeft : < A >( n : number , x : A ) => Endo< A[] > =
     ( maxLength , filler ) => xs =>
         $length( xs ) < maxLength
-        ? concat( repeat( filler , maxLength - $length( xs ) ) , xs )
+        ? concat(
+            repeat( filler , maxLength - $length( xs ) )
+            , xs )
         : xs
 
-export const reduce : < A , B >( f : Folder< A , B > ) => ( x : B ) => ( xs : A[] ) => B =
-    f => init => xs =>
+const reduce : < A , B >( f : Folder< B , A > , x : B ) => Unary< A[] , B > =
+    ( f , init ) => xs =>
         xs.reduce( f , init )
 
-export const repeat : <A>( x : A , n : number ) => A[] =
+const repeat : < A >( x : A , n : number ) => A[] =
     ( x , length ) =>
         fill( x , Array( length ) )
 
-export const replaceHead : < A >( f : ( x : A ) => A[] ) => ( xs : A[] ) => A[] =
+const replaceHead : < A >( f : Unary< A , A[] > ) => Endo< A[] > =
     f => ( [ head , ...tail ] ) =>
         concat( f( head ) , tail )
+
+
+export  { concat
+        , fill
+        , join
+        , map
+        , padLeft
+        , reduce
+        , repeat
+        , replaceHead }

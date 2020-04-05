@@ -1,26 +1,41 @@
-import { juxt } from './function'
+import  { juxt
+        , Binary , Curried2 , CurriedEndo2 , Endo2 } from './function'
 
 
-export const add : ( x : number ) => ( y : number ) => number =
-    x => y => x + y
+const add : Endo2< number > =
+    ( x , y ) => x + y
 
-export const div : ( x : number , y : number ) => number =
+const div : Endo2< number > =
     ( x , y ) => x / y
 
-export const { floor } = Math
+const { floor } = Math
 
-export const intdiv : ( x : number , y : number ) => number =
+const intdiv : Endo2< number > =
     ( x , y ) =>
         floor( div( x , y ) )
 
-export const lt : ( x : number ) => ( y : number ) => boolean =
+const lt : Curried2< number , number , boolean > =
     x => y => y < x
 
-export const modulo : ( x : number , y : number ) => number =
+const modulo : Endo2< number > =
     ( x , y ) => x % y
 
-export const divmod : ( x : number , y : number ) => number[] =
-    juxt( [ intdiv , modulo ] )
+const divmod : Binary< number , number , Tuple2< number > > =
+    juxt( [ intdiv , modulo ]
+        ) as Binary< number , number , Tuple2< number > >
 
-export const mult : ( x : number ) => ( y : number ) => number =
+const mult : CurriedEndo2< number > =
     x => y => x * y
+
+
+export  { add
+        , div
+        , divmod
+        , floor
+        , intdiv
+        , lt
+        , modulo
+        , mult }
+
+
+type Tuple2< A > = [ A , A ]
