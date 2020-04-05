@@ -4,32 +4,36 @@ What did you want?
     I wanted expressive, declarative code with consistent reasonability and safe refactorability
 
 Why did you want it?
-    I wanted the freedom to focus on the problem at hand without having to spend so much time
-    and energy trying to understand how existing code was working in order to safely modify it
+    I was tired of having to spend so much time and energy trying to understand how existing code
+    was working in order to safely modify it
 
 What led to the creation of what you are demoing?
-    frustration with the failure of conventional coding practices to achieve evolvability in software
-    
+    frustration with the failure of standard coding practices to achieve evolvability in software
+
+
 What did you do to get what you wanted?
-    feeling that there must be a better way I found FP and fell in love with the expressivity and simplicity it achieved
-    the more I struggled with software at work the deeper I dove into FP and discovered how easily it solved
-    all the issues we struggled with at work
+    feeling that there must be a better way I found FP and fell in love with the expressivity and
+    simplicity it achieved. the more I struggled with software at work the deeper I dove into FP
+    and discovered how easily it solved all the issues we struggled with at work
 
 What did you do to create your thing?
-    I constantly experiment with different ways to structure and format code
-    I love simple ideas that I can get a ton of mileage out of; ideally can be applied universally
-    I'm currently really in to maximizing purity and compositionality
+    I constantly experiment with different ways to structure and format code. I love simple ideas
+    that I can get a ton of mileage out of; ideally can be applied universally. I'm currently
+    really in to maximizing purity and compositionality
+
 
 What went wrong?
-    Even though I had found a much more satisfactory way of thinking about software, I struggled to find an approach that
-    enabled me to focus on one thing at a time without related details leaking into and hogging precious mental resources
+    Even though I had found a much more satisfactory way of thinking about software, I struggled to
+    find an approach that enabled me to focus on one thing at a time without related details
+    leaking into and hogging precious mental resources
 
 What went right?
-    I started working at CJ Affiliate and immediately saw the impact top-down design could have on my ability to stay productive
-    while maintaing a high standard for code quality and test coverage
+    I started working at CJ Affiliate and immediately saw the impact top-down design could have on
+    my ability to stay productive while maintaing a high standard for code quality
 
 What did you learn
     top-down design
+
 
 What happened that you didn't expect?
     I realized top-down design paired perfectly with declarative, compositional programming
@@ -38,8 +42,10 @@ What would you change if you had to do it over again?
     I would've stopped worrying and just started writing tests sooner in my career
 
 What would you tell someone attempting the same thing?
-    Don't trust anyone! Listen to everyone and consider everything, but experiment a lot to figure out what you like and why.
-    Take things to their logical extremes to truly understand the limits and depths of their utility.
+    Don't trust anyone! Listen to everyone and consider everything, but experiment a lot to figure
+    out what you like and why. Take things to their logical extremes to truly understand the limits
+    and depths of their utility.
+
 
 Your talk should take no longer than 20 minutes; do practice and time yourself!
 
@@ -48,21 +54,53 @@ Your talk should take no longer than 20 minutes; do practice and time yourself!
 BRAIN STORMING
 
 what is the purpose of high-level programming languages?
-    the purpose of high-level programming languages is to help programmers encode programs in a way that clearly communicates intent to the humans that will be reading them by abstracting away low-level implementation details for compilers to handle for us
+    the purpose of high-level programming languages is to help programmers encode programs in a way
+    that clearly communicates intent to the humans that will be reading them by abstracting away
+    low-level implementation details for compilers to handle for us
 
 what is intent?
     intent is purpose. in programming terms, it's the intended result of evaluating an expression
 
 what is abstraction?
-    "The essence of abstractions is preserving information that is relevant in a given context, and forgetting information that is irrelevant in that context." - John Vogel Guttag
+    "The essence of abstractions is preserving information that is relevant in a given context, and
+    forgetting information that is irrelevant in that context." - John Vogel Guttag
 
-    abstraction helps us do more with less. consider spoken language: a ton of meaning can be packed into a single word without skipping a beat. a good abstraction is exactly like that! it allows you to express your intent in terms of the domain you're working in without dilluting it with implementation details. but an abstraction needs to be precisely defined, with a consistent meaning to be useful. in human languages, dictionaries precisely define every word in terms of other words - a beautiful example of recursive definition in the wild. yet even with dictionaries, we can run into trouble. sometimes the meaning of a word completely changes depending on the context it's used. words can be pronounced the same, but have different spelling depending on the meaning - and vice versa! this is all very confusing! abstractions that behave different depending on context can be just as confusing. the easiest abstractions to work with and most reliable to build others upon always exhibit the same behavior regardless of context. if we try to build abstractions on top of others where context matters, we might leak some irrelevant details unexpectedly.
+    abstraction helps us do more with less. consider spoken language: a ton of meaning can be
+    packed into a single word without skipping a beat. a good abstraction is exactly like that! it
+    allows you to express your intent in terms of the domain you're working in without dilluting it
+    with implementation details. but an abstraction needs to be precisely defined, with a
+    consistent meaning to be useful. in human languages, dictionaries precisely define every word
+    in terms of other words - a beautiful example of recursive definition in the wild. yet even
+    with dictionaries, we can run into trouble. sometimes the meaning of a word completely changes
+    depending on the context it's used. words can be pronounced the same, but have different
+    spelling depending on the meaning - and vice versa! this is all very confusing! abstractions
+    that behave different depending on context can be just as confusing. the easiest abstractions
+    to work with and most reliable to build others upon always exhibit the same behavior regardless
+    of context. if we try to build abstractions on top of others where context matters, we might
+    leak some irrelevant details unexpectedly.
 
 what is an example of a good abstraction?
-    pure functions! a pure function acts like a mapping of its inputs to an output. all possible inputs will always map to the same output. you never have to lift your scope of thought outside of the function to reason about what it does. but we're not completely home free. anything goes inside of a function as long as it always maps inputs to outputs. an entire application could be written inside of a pure function. what happens in the function matters if we want to consistently be expressing the intent of a function at a contextually appropriate level of abstraction. things like variables seem innocent, but each one ends up being a liability that you have to push to your mental stack in order to understand the function's intent.
+    pure functions! a pure function acts like a mapping of its inputs to an output. all possible
+    inputs will always map to the same output. you never have to lift your scope of thought outside
+    of the function to reason about what it does. but we're not completely home free. anything goes
+    inside of a function as long as it always maps inputs to outputs. an entire application could
+    be written inside of a pure function. what happens in the function matters if we want to
+    consistently be expressing the intent of a function at a contextually appropriate level of
+    abstraction. things like variables seem innocent, but each one ends up being a liability that
+    you have to push to your mental stack in order to understand the function's intent.
 
 what can be done?
-    composition! and not just any composition - function composition. function composition allows us to create new abstractions exclusively in terms of existing abstractions without introducing any ad-hoc glue code. if you think about it, all software is a composition of abstractions. if we embrace this concept, we start to think about how software is built much differently. by focusing on composability, we get way more mileage out of the code we build because it can be used in contexts we didn't even consider when we wrote the code - because context doesn't matter to pure functions! this is a huge productivity boost! when we insist on expressing new abstractions on existing abstractions, we simultaneously stop reinventing the wheel. when we focus on just satisfying our immediate use case, we end up constantly reinventing countless tiny wheels, which greatly hinders our productivity. so how do we begin building things in this manner? from the top, of course!
+    composition! and not just any composition - function composition. function composition allows
+    us to create new abstractions exclusively in terms of existing abstractions without introducing
+    any ad-hoc glue code. if you think about it, all software is a composition of abstractions. if
+    we embrace this concept, we start to think about how software is built much differently. by
+    focusing on composability, we get way more mileage out of the code we build because it can be
+    used in contexts we didn't even consider when we wrote the code - because context doesn't
+    matter to pure functions! this is a huge productivity boost! when we insist on expressing new
+    abstractions on existing abstractions, we simultaneously stop reinventing the wheel. when we
+    focus on just satisfying our immediate use case, we end up constantly reinventing countless
+    tiny wheels, which greatly hinders our productivity. so how do we begin building things in this
+    manner? from the top, of course!
 
 welcome to top-down design: extreme composition edition
 
