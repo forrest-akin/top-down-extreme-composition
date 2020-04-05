@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import
-    { Appear , Box , CodePane , CodeSpan , Deck , FlexBox , FullScreen , Grid
-    , Heading , Image , ListItem , Markdown , Notes , OrderedList , Progress
-    , Slide , SpectacleLogo , Stepper , Text , UnorderedList , indentNormalizer
-    } from 'spectacle'
+import  { Appear , Box , CodePane , CodeSpan , Deck
+        , FlexBox , FullScreen , Grid , Heading , Image
+        , ListItem , Markdown , Notes , OrderedList , Progress
+        , Slide , SpectacleLogo , Stepper , Text , UnorderedList
+        , indentNormalizer
+        } from 'spectacle'
 
 // SPECTACLE_CLI_THEME_START
 

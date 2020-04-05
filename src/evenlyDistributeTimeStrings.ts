@@ -1,4 +1,4 @@
-import  { distributeSeconds , durationStringsToSeconds , secondsToDurationString } from './duration'
+import  { distributeSeconds , durationStringsToSeconds , secondsToDurationString } from './domain/duration'
 import  { join , map } from './utils/array'
 import  { pipe
         , Endo , Unary } from './utils/function'

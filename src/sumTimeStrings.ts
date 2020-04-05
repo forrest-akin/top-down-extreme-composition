@@ -1,4 +1,4 @@
-import  { durationStringsToSeconds , secondsToDurationString } from './duration'
+import  { durationStringsToSeconds , secondsToDurationString } from './domain/duration'
 import  { pipe } from './utils/function'
 import  { split } from './utils/string'
 
