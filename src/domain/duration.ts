@@ -12,8 +12,7 @@ const lengthLt3 : Unary< number[] , boolean > =
         , lt( 3 ) )
 
 const unfoldSeconds : DurationUnfolder =
-    replaceHead(
-        x => divmod( x , 60 ) ) as DurationUnfolder
+    replaceHead( x => divmod( x , 60 ) ) as DurationUnfolder
 
 const durationOfSeconds : Unary< number , Duration > =
     unfold( lengthLt3
