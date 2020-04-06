@@ -17,6 +17,7 @@
     "node": ">=10.18.0 <11 || >=12.14.0 <13 || >=13.5.0"
   },
   "dependencies": {
+    "@mdx-js/react": "^1.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -26,7 +27,6 @@
     "@ava/typescript": "^1.1.1",
     "@babel/core": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
-    "@mdx-js/react": "^1.5.2",
     "ava": "^3.5.1",
     "babel-loader": "^8.0.6",
     "file-loader": "^5.0.2",

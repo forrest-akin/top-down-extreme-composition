@@ -112,7 +112,6 @@ PRESENTATION STRUCTURE
 
 SET THE STAGE
     what is the purpose of high-level programming languages?
-    what is intent?
     what is abstraction?
     what is an example of a good abstraction?
     what can be done to maintain expressivity?
@@ -125,6 +124,7 @@ LIVE CODE DEMO
     isolate domain from application
 
 WRAPPING UP
+    Consider experimenting with a compositional, top-down approach.
     Don't trust anyone!
     Listen to everyone and consider everything with an open mind, but also test what you hear.
     Push ideas to their logical extremes to truly understand the limits and depths of their utility.
