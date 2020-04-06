@@ -1,7 +1,8 @@
 import  { head , map , join , padLeft as arrayPadLeft , reduce
         , replaceHead , repeat , tail } from '../utils/array'
-import  { pipe , unfold
+import  { identity , pipe , unfold
         , Binary , CurriedEndo2 , Endo , Endo2 , Folder , Unary } from '../utils/function'
+import  { eq , ifElse } from '../utils/logic'
 import  { add , divmod , lt , mult } from '../utils/number'
 import  { $length } from '../utils/props'
 import  { split , padLeft as stringPadLeft } from '../utils/string'
@@ -24,15 +25,18 @@ const durationOfString : Unary< string , Duration > =
         , map( Number )
         , arrayPadLeft( 3 , 0 ) )
 
+const headIs0 : Unary< number , boolean > =
+    pipe( head
+        , eq( 0 ) )
+
 const omitEmptyHours : Unary< Duration , Duration | MinSecDuration > =
-    duration =>
-        !head( duration ) ? tail( duration ) as MinSecDuration
-        : duration
+    ifElse( headIs0
+        , tail
+        , identity )
 
 const durationToString : Unary< Duration , string > =
     pipe( omitEmptyHours
-        , map(
-            pipe( String
+        , map( pipe( String
                 , stringPadLeft( 2 , '0' ) ) )
         , join( ':' ) )
 
@@ -65,7 +69,8 @@ const distributeSeconds : Binary< number , number , number[] > =
     ( seconds , n ) => (                            // using IIFE to create internal state through
         ( [ q , r ] = divmod( seconds , n ) ) =>    // function parameters instead of variables
             map( distributeRemainder( r )
-            )( repeat( q , n ) ) )()
+            )( repeat( q , n ) )
+    )()
 
 const distributeRemainder : CurriedEndo2< number > =
     r => q =>
