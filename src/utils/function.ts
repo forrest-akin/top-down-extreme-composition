@@ -1,16 +1,16 @@
 const applyTo : < A , B >( x : A , f : Unary< A , B > ) => B =
     ( x , f ) => f( x )
 
-const uncurry2 : < A , B , C >( f : Curried2< A , B , C > ) => Binary< A , B , C > =
-    f => ( x , y ) => f( x )( y )
+const cardinal : < A , B , C , D >( f : Curried2< C , A , D > ) => Curried3< Unary< B , C > , A , B , D > =
+    f => g => x => y =>
+        f( g( y ) )( x )
 
 const flip : < A , B , C >( f : Curried2< A , B , C > ) => Curried2< B , A , C > =
     f => x => y =>
         f( y )( x )
 
-const cardinal : < A , B , C , D >( f : Curried2< C , A , D > ) => Curried3< Unary< B , C > , A , B , D > =
-    f => g => x => y =>
-        f( g( y ) )( x )
+const identity : < A >( x : A ) => A =
+    x => x
 
 const juxt =
     ( ...fs ) => ( ...xs ) =>
@@ -45,6 +45,10 @@ const tapIO =
     ( f , label = f.name ) =>
         tapOut( tapIn( f , label ) , label )
 
+const uncurry2 : < A , B , C >( f : Curried2< A , B , C > ) => Binary< A , B , C > =
+    f => ( x , y ) =>
+        f( x )( y )
+
 const unfold : < A , B >( f : Predicate< B > , g : Endo< B > , h : Unary< A , B > ) => Unary< A , B > =
     ( f , g , h ) => x => {
         let y = h( x )
@@ -57,6 +61,7 @@ const unfold : < A , B >( f : Predicate< B > , g : Endo< B > , h : Unary< A , B 
 export  { applyTo
         , cardinal
         , flip
+        , identity
         , juxt
         , pipe
         , spread
