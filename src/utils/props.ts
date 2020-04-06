@@ -8,6 +8,6 @@ const $length : < S extends Lengthwise >( x : S ) => number =
 export  { $length }
 
 
-interface Lengthwise {
+export interface Lengthwise {
     length : number
 }
