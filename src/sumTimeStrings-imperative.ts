@@ -11,13 +11,14 @@ function sumTimeStrings ( input ) {
     const minutes = Math.floor( sum / 60 )
     const hours = Math.floor( minutes / 60 )
     const timeParts = [ hours , minutes % 60 , seconds ]
+    const timeStrings = []
 
     for ( let i = 0 ; i < timeParts.length ; i++ ) {
-        const timePart = timeParts[ i ]
-        timeParts[ i ] = String( timePart ).padStart( 2 , '0' )
+        const timeString = String( timeParts[ i ] )
+        timeStrings.push( timeString.padStart( 2 , '0' ) )
     }
     
-    return timeParts.join( ':' )
+    return timeStrings.join( ':' )
 }
 
 

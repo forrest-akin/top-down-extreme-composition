@@ -21,8 +21,8 @@ const modulo : Endo2< number > =
     ( x , y ) => x % y
 
 const divmod : Binary< number , number , Tuple2< number > > =
-    juxt( [ intdiv , modulo ]
-        ) as Binary< number , number , Tuple2< number > >
+    juxt( intdiv
+        , modulo ) as Binary< number , number , Tuple2< number > >
 
 const mult : CurriedEndo2< number > =
     x => y => x * y

@@ -10,6 +10,9 @@ const fill : < A >( x : A , xs : A[] ) => A[] =
     ( filler , xs ) =>
         xs.fill( filler )
 
+const head : < A >( xs : A[] ) => A =
+    ( [ x ] = [] ) => x
+
 const join : < A >( x : string ) => Unary< A[] , string > =
     delimiter => xs =>
         xs.join( delimiter )
@@ -35,15 +38,20 @@ const repeat : < A >( x : A , n : number ) => A[] =
         fill( x , Array( length ) )
 
 const replaceHead : < A >( f : Unary< A , A[] > ) => Endo< A[] > =
-    f => ( [ head , ...tail ] ) =>
-        concat( f( head ) , tail )
+    f => xs =>
+        concat( f( head( xs ) ) , tail( xs ) )
+
+const tail : < A >( xs : A[] ) => A[] =
+    ( [ , ...xs ] = [] ) => xs
 
 
 export  { concat
         , fill
+        , head
         , join
         , map
         , padLeft
         , reduce
         , repeat
-        , replaceHead }
+        , replaceHead
+        , tail }

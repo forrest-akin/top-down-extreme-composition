@@ -1,14 +1,10 @@
-{ "compilerOptions":
-    { "allowJs" : false
-    , "allowSyntheticDefaultImports" : true
+{ "compilerOptions" :
+    { "allowSyntheticDefaultImports" : true
     , "experimentalDecorators" : true
     , "inlineSources" : true
-    , "jsx" : "react"
-    , "lib" : ["esnext", "dom"]
     , "module" : "commonjs"
-    , "moduleResolution" : "node"
+    , "outDir" : "dist"
     , "sourceMap" : true
-    , "strict" : false
-    , "target" : "es6"
-    , "types" : ["node"] } }
-  
+    , "target" : "ES2019"
+    , "types" : ["node"] }
+, "include" : [ "src/**/*" ] }

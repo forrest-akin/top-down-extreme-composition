@@ -2,14 +2,20 @@
   "version": "0.0.1",
   "name": "top-down-extreme-composition",
   "description": "slides and code for top-down design: extreme composition edition",
-  "repository": { "type": "git", "url": "git+https://github.com/forrest-akin/top-down-extreme-composition.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forrest-akin/top-down-extreme-composition.git"
+  },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "webpack",
+    "build": "tsc",
+    "build-slides": "webpack",
     "start": "webpack-dev-server --hot",
-    "test": "ava"
+    "test": "npm run build && ava --verbose"
   },
-  "engines": { "node": ">=10.18.0 <11 || >=12.14.0 <13 || >=13.5.0" },
+  "engines": {
+    "node": ">=10.18.0 <11 || >=12.14.0 <13 || >=13.5.0"
+  },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -17,6 +23,7 @@
     "spectacle": "^6.0.0"
   },
   "devDependencies": {
+    "@ava/typescript": "^1.1.1",
     "@babel/core": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@mdx-js/react": "^1.5.2",
