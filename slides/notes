@@ -21,7 +21,6 @@ What did you do to create your thing?
     that I can get a ton of mileage out of; ideally can be applied universally. I'm currently
     really in to maximizing purity and compositionality
 
-
 What went wrong?
     Even though I had found a much more satisfactory way of thinking about software, I struggled to
     find an approach that enabled me to focus on one thing at a time without related details
@@ -31,9 +30,9 @@ What went right?
     I started working at CJ Affiliate and immediately saw the impact top-down design could have on
     my ability to stay productive while maintaing a high standard for code quality
 
+
 What did you learn
     top-down design
-
 
 What happened that you didn't expect?
     I realized top-down design paired perfectly with declarative, compositional programming
@@ -42,21 +41,23 @@ What would you change if you had to do it over again?
     I would've stopped worrying and just started writing tests sooner in my career
 
 What would you tell someone attempting the same thing?
-    Don't trust anyone! Listen to everyone and consider everything, but experiment a lot to figure
-    out what you like and why. Take things to their logical extremes to truly understand the limits
-    and depths of their utility.
+    Don't trust anyone! Listen to everyone and consider everything, but also test what you hear.
+    Take things to their logical extremes to truly understand the limits and depths of their
+    utility.
 
 
 Your talk should take no longer than 20 minutes; do practice and time yourself!
 
 
 
+
 BRAIN STORMING
 
 what is the purpose of high-level programming languages?
-    the purpose of high-level programming languages is to help programmers encode programs in a way
-    that clearly communicates intent to the humans that will be reading them by abstracting away
-    low-level implementation details for compilers to handle for us
+    the purpose of high-level programming languages is to help programmers encode software in a way
+    that clearly communicates intent to the people that will be reading it by abstracting away
+    low-level implementation details compilers can handle for us. the more subject a domain is
+    to changing requirements, the more important it becomes to capture the high-level domain logic.
 
 what is intent?
     intent is purpose. in programming terms, it's the intended result of evaluating an expression
@@ -68,7 +69,7 @@ what is abstraction?
     abstraction helps us do more with less. consider spoken language: a ton of meaning can be
     packed into a single word without skipping a beat. a good abstraction is exactly like that! it
     allows you to express your intent in terms of the domain you're working in without dilluting it
-    with implementation details. but an abstraction needs to be precisely defined, with a
+    with irrelevant details. but an abstraction needs to be precisely defined, with a
     consistent meaning to be useful. in human languages, dictionaries precisely define every word
     in terms of other words - a beautiful example of recursive definition in the wild. yet even
     with dictionaries, we can run into trouble. sometimes the meaning of a word completely changes
@@ -77,19 +78,19 @@ what is abstraction?
     that behave different depending on context can be just as confusing. the easiest abstractions
     to work with and most reliable to build others upon always exhibit the same behavior regardless
     of context. if we try to build abstractions on top of others where context matters, we might
-    leak some irrelevant details unexpectedly.
+    leak some irrelevant details unintentionally.
 
 what is an example of a good abstraction?
     pure functions! a pure function acts like a mapping of its inputs to an output. all possible
-    inputs will always map to the same output. you never have to lift your scope of thought outside
+    inputs will always map to the same outputs. you never have to lift your scope of thought outside
     of the function to reason about what it does. but we're not completely home free. anything goes
     inside of a function as long as it always maps inputs to outputs. an entire application could
     be written inside of a pure function. what happens in the function matters if we want to
     consistently be expressing the intent of a function at a contextually appropriate level of
-    abstraction. things like variables seem innocent, but each one ends up being a liability that
-    you have to push to your mental stack in order to understand the function's intent.
+    abstraction. things like variables seem innocent, but each one comes at a cost to your mental
+    stack making it increasingly difficult to understand the function's intent.
 
-what can be done?
+what can be done to maintain expressivity?
     composition! and not just any composition - function composition. function composition allows
     us to create new abstractions exclusively in terms of existing abstractions without introducing
     any ad-hoc glue code. if you think about it, all software is a composition of abstractions. if
@@ -104,6 +105,27 @@ what can be done?
 
 welcome to top-down design: extreme composition edition
 
-Sum Time Strings
-Input: "12:32 34:01 15:23 9:27 55:22 25:56"
-Output: "2:32:41"
+
+
+
+PRESENTATION STRUCTURE
+
+SET THE STAGE
+    what is the purpose of high-level programming languages?
+    what is intent?
+    what is abstraction?
+    what is an example of a good abstraction?
+    what can be done to maintain expressivity?
+
+LIVE CODE DEMO
+    establish base set of vocabulary (utils)
+    constraints (no function blocks)
+    pipe all the things (maximize compositionality)
+    currying for increased composability
+    isolate domain from application
+
+WRAPPING UP
+    Don't trust anyone!
+    Listen to everyone and consider everything with an open mind, but also test what you hear.
+    Push ideas to their logical extremes to truly understand the limits and depths of their utility.
+    Look beyond your personal realm of familiarity and foster a more well-rounded understanding of approaches to building software.
