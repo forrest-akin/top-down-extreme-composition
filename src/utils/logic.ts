@@ -1,4 +1,7 @@
-const eq : < A >( x : A ) => ( y : A ) => boolean =
+import  { Unary } from './function'
+
+
+const eq : < A >( x : A ) => Unary< A , boolean > =
     x => y =>
         x === y
 
