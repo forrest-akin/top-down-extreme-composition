@@ -1,11 +1,13 @@
 import  { durationStringsToSeconds , secondsToDurationString } from './domain/duration'
-import  { pipe } from './utils/function'
+import  { pipe
+        , Unary } from './utils/function'
 import  { split } from './utils/string'
 
 
-const parse = split( ' ' )
+const parse : Unary< string , string[] > =
+    split( ' ' )
 
-const sumTimeStrings =
+const sumTimeStrings : Unary< string , string > =
     pipe( parse
         , durationStringsToSeconds
         , secondsToDurationString )

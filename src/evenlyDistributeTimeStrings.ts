@@ -6,7 +6,8 @@ import  { $length } from './utils/props'
 import  { split } from './utils/string'
 
 
-const parse = split( ' ' )
+const parse : Unary< string , string[] > =
+    split( ' ' )
 
 const distributeDurationStrings : Unary< string[] , number[] > =
     durationStrings =>
@@ -14,7 +15,8 @@ const distributeDurationStrings : Unary< string[] , number[] > =
             durationStringsToSeconds( durationStrings )
             , $length( durationStrings ) )
 
-const serialize = join( ' ' )
+const serialize : Unary< string[] , string > =
+    join( ' ' )
 
 const evenlyDistributeTimeStrings : Endo< string > =
     pipe( parse
