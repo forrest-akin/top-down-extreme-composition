@@ -8,8 +8,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const babelLoader = {
   loader: require.resolve('babel-loader'),
   options: {
-    // Use user-provided .babelrc
-    babelrc: true,
     // ... with some additional needed options.
     presets: [require.resolve('@babel/preset-react')]
   }
@@ -21,10 +19,17 @@ const babelLoader = {
 
 module.exports = {
   mode: 'development',
-  entry: './slides/index.js', // Default for boilerplate generation.
+  entry: path.resolve(__dirname, 'presentation/index.jsx'), // Default for boilerplate generation.
   output: {
     path: path.resolve('dist'),
     filename: 'deck.js'
+  },
+  resolve: {
+    alias: {
+      code: path.resolve(__dirname, 'presentation/code'),
+      slides: path.resolve(__dirname, 'presentation/slides'),
+    },
+    extensions: ['.js','.jsx']
   },
   devtool: 'source-map',
   module: {
@@ -55,7 +60,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Spectacle presentation',
-      template: './slides/index.html'
+      template: path.resolve(__dirname, 'presentation/index.html')
     })
   ]
 };
