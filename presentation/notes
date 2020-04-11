@@ -60,7 +60,7 @@ what is the purpose of high-level programming languages?
     to changing requirements, the more important it becomes to capture the high-level domain logic.
 
 what is intent?
-    intent is purpose. in programming terms, it's the intended result of evaluating an expression
+    intent is purpose. in programming terms, it's the purpose for evaluating an expression
 
 what is abstraction?
     "The essence of abstractions is preserving information that is relevant in a given context, and
@@ -91,6 +91,13 @@ what is an example of a good abstraction?
     stack making it increasingly difficult to understand the function's intent.
 
 what can be done to maintain expressivity?
+    "Since there are always different ways of expressing the same meaning, components that are
+    logically compatible nevertheless evolve with mismatched interfaces. Current software practices
+    fail to exploit the compositional potential within existing code; they encourage from-scratch
+    development and coupled code. This is unfortunate, because much expense in software stems
+    from many versions of similar things. Multiplied code means multiplied complexity and multiplied
+    costs. Invasive porting also risks introducing bugs to working code." - Stephen Kell
+
     composition! and not just any composition - function composition. function composition allows
     us to create new abstractions exclusively in terms of existing abstractions without introducing
     any ad-hoc glue code. if you think about it, all software is a composition of abstractions. if
@@ -108,24 +115,36 @@ welcome to top-down design: extreme composition edition
 
 
 
+Top-Down Design: Extreme Composition Edition
+
 PRESENTATION STRUCTURE
 
-SET THE STAGE
+SET THE STAGE (5-10min)
     what is the purpose of high-level programming languages?
+        - clearly communicating intent with abstractions
     what is abstraction?
+        - amplifying the relevant while hiding the irrelevant
     what is an example of a good abstraction?
+        - pure functions
     what can be done to maintain expressivity?
+        - top-down composition
 
-LIVE CODE DEMO
-    establish base set of vocabulary (utils)
-    constraints (no function blocks)
-    pipe all the things (maximize compositionality)
-    currying for increased composability
+LIVE CODE DEMO (10-15min)
+    constraints liberate
+        - no function blocks
+        - no variables/assignments
+    establish base set of vocabulary
+        - expressive generic utils for built-ins
+    pipe all the things
+        - maximizing compositionality minimizes ad-hoc glue logic
+        - prioritize composability in implementation
+        - currying improves composability
     isolate domain from application
+        - enforce a strict boundary between domain and application logic
+        - lift responsibility to the caller to sanitize inputs and serialize outputs
 
-WRAPPING UP
+WRAPPING UP (5min)
     Consider experimenting with a compositional, top-down approach.
-    Don't trust anyone!
-    Listen to everyone and consider everything with an open mind, but then test what you hear to judge for yourself.
+    Don't trust anyone! Listen to everyone and consider everything with an open mind, but then test what you hear to judge for yourself.
     Push ideas to their extremes to truly understand the limits and depths of their utility.
-    Look beyond your personal realm of familiarity and foster a more well-rounded understanding of approaches to building software.
+    Look beyond your personal realm of familiarity to foster a well-rounded understanding of and appreciation for the many approaches to building software.
