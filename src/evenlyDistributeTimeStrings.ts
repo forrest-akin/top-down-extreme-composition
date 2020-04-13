@@ -1,6 +1,6 @@
 import  { distributeSeconds , durationStringsToSeconds , secondsToDurationString } from './domain/duration'
 import  { join , map } from './utils/array'
-import  { pipe
+import  { converge , pipe
         , Endo , Unary } from './utils/function'
 import  { $length } from './utils/props'
 import  { split } from './utils/string'
@@ -10,10 +10,9 @@ const parse : Unary< string , string[] > =
     split( ' ' )
 
 const distributeDurationStrings : Unary< string[] , number[] > =
-    durationStrings =>
-        distributeSeconds(
-            durationStringsToSeconds( durationStrings )
-            , $length( durationStrings ) )
+    converge( distributeSeconds
+        , durationStringsToSeconds
+        , $length )
 
 const serialize : Unary< string[] , string > =
     join( ' ' )
