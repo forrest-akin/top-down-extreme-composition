@@ -1,24 +1,24 @@
 function sumTimeStrings ( input ) {
-    const strings = input.split( ' ' )
-    let sum = 0
+    const timeStrings = input.split( ' ' );
+    let sum = 0;
 
-    for ( const string of strings ) {
-        const [ minutes , seconds ] = string.split( ':' )
-        sum += Number( seconds ) + Number( minutes ) * 60
+    for ( let i = 0 ; i < timeStrings.length ; i++ ) {
+        const timeString = timeStrings[ i ];
+        const [ minutes , seconds ] = timeString.split( ':' );
+        sum += Number( seconds ) + Number( minutes ) * 60;
     }
 
-    const seconds = sum % 60
-    const minutes = Math.floor( sum / 60 )
-    const hours = Math.floor( minutes / 60 )
-    const timeParts = [ hours , minutes % 60 , seconds ]
-    const timeStrings = []
+    const minutes = Math.floor( sum / 60 );
+    const timeParts = [ Math.floor( minutes / 60 ) , minutes % 60 , sum % 60 ];
+    const timeStringParts = [];
 
     for ( let i = 0 ; i < timeParts.length ; i++ ) {
-        const timeString = String( timeParts[ i ] )
-        timeStrings.push( timeString.padStart( 2 , '0' ) )
+        const timePart = timeParts[ i ];
+        const formattedTimePart = String( timePart ).padStart( 2 , '0' );
+        timeStringParts.push( formattedTimePart );
     }
-    
-    return timeStrings.join( ':' )
+
+    return timeStringParts.join( ':' );
 }
 
 
