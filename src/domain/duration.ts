@@ -1,6 +1,6 @@
 import  { head , map , join , padLeft as arrayPadLeft , reduce
-        , replaceHead , repeat , tail } from '../utils/array'
-import  { identity , pipe , unfold
+        , replaceHead , repeat , tail , unfold } from '../utils/array'
+import  { identity , pipe
         , Binary , CurriedEndo2 , Endo , Endo2 , Folder , Unary } from '../utils/function'
 import  { eq , ifElse } from '../utils/logic'
 import  { add , divmod , lt , mult } from '../utils/number'
@@ -18,7 +18,7 @@ const unfoldSeconds : DurationUnfolder =
 const durationOfSeconds : Unary< number , Duration > =
     unfold( lengthLt3
         , unfoldSeconds
-        , Array.of ) as Unary< number , Duration >
+        , Array.of )
 
 const durationOfString : Unary< string , Duration > =
     pipe( split( ':' )
