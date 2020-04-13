@@ -1,9 +1,16 @@
+const apply =
+    f => xs =>
+        f( ...xs )
+
 const applyTo : < A , B >( x : A , f : Unary< A , B > ) => B =
     ( x , f ) => f( x )
 
-const cardinal : < A , B , C , D >( f : Curried2< C , A , D > ) => Curried3< Unary< B , C > , A , B , D > =
-    f => g => x => y =>
-        f( g( y ) )( x )
+const collectArgs =
+    ( ...xs ) => xs
+
+const converge =
+    ( g , ...fs ) => ( ...xs ) =>
+        g( ...fs.map( f => f( ...xs ) ) )
 
 const flip : < A , B , C >( f : Curried2< A , B , C > ) => Curried2< B , A , C > =
     f => x => y =>
@@ -16,6 +23,25 @@ const juxt =
     ( ...fs ) => ( ...xs ) =>
         fs.map( spread( xs ) )
 
+const logWithLabel =
+    label =>
+        tap( x => console.log( { [ label ] : x } ) )
+
+const logInput =
+    ( f , label = '' ) =>
+        pipe( collectArgs
+            , logWithLabel( `${label || f.name}::in` )
+            , apply( f ) )
+
+const logOutput =
+    ( f , label = '' ) =>
+        pipe( f
+            , logWithLabel( `${label || f.name}::out` ) )
+
+const logIO =
+    ( f , label = '' ) =>
+        logOutput( logInput( f , label ) , label )
+
 const pipe =
     ( f , ...fs ) => ( ...xs ) =>
         fs.reduce( applyTo , f( ...xs ) )
@@ -24,53 +50,36 @@ const spread =
     xs => f =>
         f( ...xs )
 
-const tap : < A >( x : A ) => A =
-    x =>
-        ( console.log( x )
+const tap =
+    f => x =>
+        ( f( x )
         , x )
 
-const tapIn =
-    ( f , label = f.name ) => ( ...args ) =>
-        ( console.log( { [ `${label}::in` ] : args } )
-        , f( ...args) )
-
-const tapOut =
-    ( f , label = f.name ) =>
-        pipe( f
-            , ( x : any ) =>
-                ( console.log( { [ `${label}::out` ] : x } )
-                , x ) )
-
-const tapIO =
-    ( f , label = f.name ) =>
-        tapOut( tapIn( f , label ) , label )
+const unary =
+    f => x =>
+        f( x )
 
 const uncurry2 : < A , B , C >( f : Curried2< A , B , C > ) => Binary< A , B , C > =
     f => ( x , y ) =>
         f( x )( y )
 
-const unfold : < A , B >( f : Predicate< B > , g : Endo< B > , h : Unary< A , B > ) => Unary< A , B > =
-    ( f , g , h ) => x => {
-        let y = h( x )
-        while ( f( y ) )
-            y = g( y )
-        return y
-    }
 
-
-export  { applyTo
-        , cardinal
+export  { apply
+        , applyTo
+        , collectArgs
+        , converge
         , flip
         , identity
         , juxt
+        , logInput
+        , logIO
+        , logOutput
+        , logWithLabel
         , pipe
         , spread
         , tap
-        , tapIO
-        , tapIn
-        , tapOut
-        , uncurry2
-        , unfold }
+        , unary
+        , uncurry2 }
 
 
 export interface Predicate< A > {
