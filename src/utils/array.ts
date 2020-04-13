@@ -1,4 +1,6 @@
-import  { Endo , Folder , Unary } from './function'
+import  { converge , identity , logIO , unary
+        , Endo , Folder , Unary, pipe } from './function'
+import  { ifElse } from './logic'
 import  { $length } from './props'
 
 
@@ -38,11 +40,20 @@ const repeat : < A >( x : A , n : number ) => A[] =
         fill( x , Array( length ) )
 
 const replaceHead : < A >( f : Unary< A , A[] > ) => Endo< A[] > =
-    f => xs =>
-        concat( f( head( xs ) ) , tail( xs ) )
+    f =>
+        converge( concat
+            , pipe( head , f )
+            , tail )
 
 const tail : < A >( xs : A[] ) => A[] =
     ( [ , ...xs ] = [] ) => xs
+
+const unfold =
+    ( next , f , init : any = identity ) =>
+        pipe( unary( init )
+            , ifElse( next
+                , x => unfold( next , f )( f( x ) )
+                , identity ) )
 
 
 export  { concat
@@ -54,4 +65,5 @@ export  { concat
         , reduce
         , repeat
         , replaceHead
-        , tail }
+        , tail
+        , unfold }
