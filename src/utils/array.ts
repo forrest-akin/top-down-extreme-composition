@@ -1,5 +1,5 @@
-import  { converge , identity , logIO , unary
-        , Endo , Folder , Unary, pipe } from './function'
+import  { converge , identity , logIO , pipe , unary
+        , Endo , Folder , Unary } from './function'
 import  { ifElse } from './logic'
 import  { $length } from './props'
 
