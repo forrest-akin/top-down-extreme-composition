@@ -24,7 +24,8 @@ const steps =
     , { start : 1 , end : 14 } ]
 
 const sumTimeStrings =
-    { heading , code , steps }
+    { type : 'code'
+    , props : { heading , code , steps } }
 
 
 export  { sumTimeStrings }
