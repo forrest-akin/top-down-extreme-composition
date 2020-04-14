@@ -55,8 +55,8 @@ const durationStringToSeconds : Unary< string , number > =
         , durationToSeconds )
 
 const foldTimeStringToSeconds : Folder< number , string > =
-    ( x , y ) =>
-        add( x , durationStringToSeconds( y ) )
+    ( seconds , x ) =>
+        add( seconds , durationStringToSeconds( x ) )
 
 const durationStringsToSeconds : Unary< string[] , number > =
     reduce( foldTimeStringToSeconds , 0 )
