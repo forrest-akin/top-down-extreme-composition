@@ -1,37 +1,29 @@
 import  React from 'react'
-import  { CodePane , Deck , Heading , Slide , Stepper } from 'spectacle'
+import  { Box , Deck , FlexBox , FullScreen , Progress } from 'spectacle'
+
+import  { renderSlide } from './renderers'
 
 
 const Presentation =
-    ( { theme , template , slides } ) => (
+    ( { slides } ) => (
         <Deck theme={ theme } template={ template } transitionEffect="fade">
             { slides.map( renderSlide ) }
         </Deck> )
 
-const renderSlide =
-    ( { type , props } , index ) =>
-        slideRenderersByType[ type ]( props , index )
+const theme =
+    { fonts :
+        { header : '"Open Sans Condensed", Helvetica, Arial, sans-serif'
+        , text : '"Open Sans Condensed", Helvetica, Arial, sans-serif'
+        , monospace : 'Dank Mono' } }
 
-const renderCodeSlide =
-    ( { heading , code , steps } , index ) => (
-        <Slide backgroundImage="linear-gradient(to bottom, #2a2139 75%, #34294f)" transitionEffect="slide" key={ heading + index }>
-            <Heading fontSize="h3"> { heading } </Heading>
-            <Stepper defaultValue={ [] } values={ steps }>
-                { ( { autoFillHeight = true , start , end , size = 18 } ) => (
-                    <CodePane
-                        autoFillHeight
-                        fontFamily={ 'Dank Mono' }
-                        fontSize={ size }
-                        highlightStart={ start }
-                        highlightEnd={ end }
-                        language={ 'typescript' }
-                    >
-                        { code }
-                    </CodePane> ) }
-            </Stepper>
-        </Slide> )
+const template =
+    () => (
+        <FlexBox justifyContent="space-between" position="absolute" bottom={ 0 } width={ 1 }>
+            <Box padding="0 1em">
+                <FullScreen /> </Box>
+            
+            <Box padding="1em"> 
+                <Progress /> </Box> </FlexBox> )
 
-const slideRenderersByType =
-    { code : renderCodeSlide }
 
 export  { Presentation }
