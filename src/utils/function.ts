@@ -1,16 +1,29 @@
+const always =
+    x => () => x
+
 const apply =
     f => xs =>
         f( ...xs )
 
-const applyTo : < A , B >( x : A , f : Unary< A , B > ) => B =
-    ( x , f ) => f( x )
+const applyTo =
+    x => f =>
+        f( x )
+
+const applyTo2 : < A , B >( x : A , f : Unary< A , B > ) => B =
+    ( x , f ) =>
+        f( x )
+
+const binary : < A , B , C >( f : Curried2< A , B , C > ) => Binary< A , B , C > =
+    f => ( x , y ) =>
+        f( x )( y )
 
 const collectArgs =
     ( ...xs ) => xs
 
 const converge =
-    ( g , ...fs ) => ( ...xs ) =>
-        g( ...fs.map( f => f( ...xs ) ) )
+    ( f , ...fs ) =>
+        pipe( juxt( ...fs )
+            , apply( f ) )
 
 const flip : < A , B , C >( f : Curried2< A , B , C > ) => Curried2< B , A , C > =
     f => x => y =>
@@ -30,13 +43,13 @@ const logWithLabel =
 const logInput =
     ( f , label = '' ) =>
         pipe( collectArgs
-            , logWithLabel( `${label || f.name}::in` )
+            , logWithLabel( `${ label || f.name }::in` )
             , apply( f ) )
 
 const logOutput =
     ( f , label = '' ) =>
         pipe( f
-            , logWithLabel( `${label || f.name}::out` ) )
+            , logWithLabel( `${ label || f.name }::out` ) )
 
 const logIO =
     ( f , label = '' ) =>
@@ -44,7 +57,10 @@ const logIO =
 
 const pipe =
     ( f , ...fs ) => ( ...xs ) =>
-        fs.reduce( applyTo , f( ...xs ) )
+        fs.reduce( applyTo2 , f( ...xs ) )
+
+const second =
+    ( _ , y ) => y
 
 const spread =
     xs => f =>
@@ -59,13 +75,11 @@ const unary =
     f => x =>
         f( x )
 
-const uncurry2 : < A , B , C >( f : Curried2< A , B , C > ) => Binary< A , B , C > =
-    f => ( x , y ) =>
-        f( x )( y )
 
-
-export  { apply
+export  { always
+        , apply
         , applyTo
+        , binary
         , collectArgs
         , converge
         , flip
@@ -76,10 +90,10 @@ export  { apply
         , logOutput
         , logWithLabel
         , pipe
+        , second
         , spread
         , tap
-        , unary
-        , uncurry2 }
+        , unary }
 
 
 export interface Predicate< A > {
