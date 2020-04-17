@@ -1,4 +1,4 @@
-import  { converge , identity , logIO , pipe , unary
+import  { applyTo , converge , identity , logIO , pipe , unary
         , Endo , Folder , Unary } from './function'
 import  { ifElse } from './logic'
 import  { $length } from './props'
@@ -11,6 +11,16 @@ const concat : < A >( xs : A[] , ys : A[] ) => A[] =
 const fill : < A >( x : A , xs : A[] ) => A[] =
     ( filler , xs ) =>
         xs.fill( filler )
+
+const foldMap =
+    ( append , empty ) => f =>
+        reduce(
+            ( x , y ) => append( x , f( y ) )
+            , empty() )
+
+const fold =
+    pipe( foldMap
+        , applyTo( identity ) )
 
 const head : < A >( xs : A[] ) => A =
     ( [ x ] = [] ) => x
@@ -58,6 +68,8 @@ const unfold =
 
 export  { concat
         , fill
+        , fold
+        , foldMap
         , head
         , join
         , map
