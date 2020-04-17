@@ -68,8 +68,8 @@ const secondsToDurationString : Unary< number , string > =
 const distributeSeconds : Binary< number , number , number[] > =
     ( seconds , n ) => (                            // using IIFE to create internal state through
         ( [ q , r ] = divmod( seconds , n ) ) =>    // function parameters instead of variables
-            map( distributeRemainder( r )
-                )( repeat( q , n ) )
+            repeat( q , n )
+            .map( distributeRemainder( r ) )
     )()
 
 const distributeRemainder : CurriedEndo2< number > =
