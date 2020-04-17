@@ -1,4 +1,5 @@
-import  { juxt , pipe
+import  { foldMap } from './array'
+import  { always , identity , juxt , pipe
         , Binary , Curried2 , CurriedEndo2 , Endo2 } from './function'
 
 
@@ -11,6 +12,9 @@ const div : Endo2< number > =
         x / y
 
 const { floor } = Math
+
+const increment =
+    x => add( x , 1 )
 
 const intdiv : Endo2< number > =
     pipe( div
@@ -32,15 +36,24 @@ const mult : CurriedEndo2< number > =
     x => y =>
         x * y
 
+const sumFoldMap =
+    foldMap( add , always( 0 ) )
+
+const sum =
+    sumFoldMap( identity )
+
 
 export  { add
         , div
         , divmod
         , floor
+        , increment
         , intdiv
         , lt
         , modulo
-        , mult }
+        , mult
+        , sum
+        , sumFoldMap }
 
 
 type Tuple2< A > = [ A , A ]
