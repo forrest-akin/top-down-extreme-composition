@@ -25,7 +25,7 @@ const durationOfString : Unary< string , Duration > =
         , map( Number )
         , arrayPadLeft( 3 , 0 ) )
 
-const headIs0 : Unary< number , boolean > =
+const headIs0 : Unary< number[] , boolean > =
     pipe( head
         , eq( 0 ) )
 
