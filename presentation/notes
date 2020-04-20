@@ -135,13 +135,13 @@ LIVE CODE DEMO (10-15min)
         - no variables/assignments
     establish base set of vocabulary
         - expressive generic utils for built-ins
+    isolate domain from application
+        - enforce a strict boundary between domain and application logic
+        - lift responsibility to the caller to sanitize inputs and serialize outputs
     pipe all the things
         - maximizing compositionality minimizes ad-hoc glue logic
         - prioritize composability in implementation
         - currying improves composability
-    isolate domain from application
-        - enforce a strict boundary between domain and application logic
-        - lift responsibility to the caller to sanitize inputs and serialize outputs
 
 WRAPPING UP (5min)
     Consider experimenting with a compositional, top-down approach.
