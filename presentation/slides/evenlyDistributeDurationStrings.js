@@ -1,7 +1,4 @@
-const heading = 'evenlyDistributeTimeStrings'
-
-const code=
-`import  { distributeSeconds , durationStringsToSeconds , secondsToDurationString } from './domain/duration'
+const code = `import  { distributeSeconds , durationStringsToSeconds , secondsToDurationString } from './domain/duration'
 import  { join , map } from './utils/array'
 import  { converge , pipe
         , Endo , Unary } from './utils/function'
@@ -28,6 +25,8 @@ const evenlyDistributeTimeStrings : Endo< string > =
 
 
 export  { evenlyDistributeTimeStrings }`
+
+const heading = 'evenlyDistributeTimeStrings'
 
 const steps =
     [  ]

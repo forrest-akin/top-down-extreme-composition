@@ -1,4 +1,4 @@
-const heading = 'sumTimeStrings'
+const heading = 'sumDurationStrings'
 
 const code =
 `import  { durationStringsToSeconds , secondsToDurationString } from './domain/duration'
@@ -23,9 +23,9 @@ const steps =
     , { autoFillHeight : false , start : 1 , end : 13 , size : 24 }
     , { start : 1 , end : 14 } ]
 
-const sumTimeStrings =
+const sumDurationStrings =
     { type : 'code'
     , props : { heading , code , steps } }
 
 
-export  { sumTimeStrings }
+export  { sumDurationStrings }
