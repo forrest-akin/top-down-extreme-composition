@@ -1,4 +1,4 @@
-import  { applyTo , converge , identity , logIO , pipe , unary
+import  { applyTo , converge , identity , pipe
         , Endo , Folder , Unary } from './function'
 import  { ifElse } from './logic'
 import  { _length } from './props'
