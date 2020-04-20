@@ -1,5 +1,5 @@
 import  { head , map , join , padLeft as arrayPadLeft , reduce
-        , replaceHead , repeat , tail , unfold } from '../utils/array'
+        , replaceHead , tail , unfold } from '../utils/array'
 import  { identity , pipe , unary
         , Binary , Endo , Endo2 , Unary } from '../utils/function'
 import  { eq , ifElse } from '../utils/logic'
@@ -34,7 +34,7 @@ const omitEmptyHours : Unary< Duration , Duration | MinSecDuration > =
         , tail
         , identity )
 
-const formatDurationPart =
+const formatDurationPart : Unary< number , string > =
     pipe( String
         , stringPadLeft( 2 , '0' ) )
 
@@ -46,7 +46,7 @@ const durationToString : Unary< Duration , string > =
 const multiply60 : Endo< number > =
     mult( 60 )
 
-const foldDurationParts : Endo2< number >=
+const foldDurationParts : Endo2< number > =
     ( x , y ) =>
         add( multiply60( x ) , y )
 
@@ -68,16 +68,8 @@ const secondsToDurationString : Unary< Seconds , DurationString > =
     pipe( durationOfSeconds
         , durationToString )
 
-const distributeSeconds : Binary< Seconds , number , Seconds[] > =
-    ( seconds , n ) => (                                // using IIFE to create internal state through
-        ( [ q , r ] = divmod( seconds , n ) ) =>        // function parameters instead of variables
-            repeat( q , n )
-            .map( x => add( x , r && ( --r , 1 ) ) )    // if r > 0, add 1 to q and decrement r
-    )()                                                 // if r = 0, add 0 to q
 
-
-export  { distributeSeconds
-        , durationOfSeconds
+export  { durationOfSeconds
         , durationOfString
         , durationStringToSeconds
         , durationStringsToSeconds
