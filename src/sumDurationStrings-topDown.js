@@ -1,20 +1,4 @@
-import  test from 'ava'
-
-
-test( 'returns duration string of summed input duration strings'
-    , t => {
-        // given
-        const input = '12:32 34:01 15:23 9:27 55:22 25:56'
-
-        // when
-        const actual = sumDurationStrings( input )
-
-        // then
-        const expected = '02:32:41'
-        t.is( actual , expected ) } )
-
-
-const sumDurationStrings =
+export const sumDurationStrings =
     ( input ) => {
         const durationStrings = input.split( ' ' )
         const seconds = durationsStringsToSeconds( durationStrings )
