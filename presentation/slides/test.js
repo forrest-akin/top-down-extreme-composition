@@ -1,4 +1,4 @@
-import  { sumDurationStrings as code } from '../code/sumDurationStrings'
+import  { sumDurationStringsTest as code } from '../code/sumDurationStrings-test'
 
 
 const heading = 'sumDurationStrings ( Compositional )'
@@ -8,9 +8,9 @@ const steps =
     , { autoFillHeight : false , start : 1 , end : 13 , size : 24 }
     , { start : 1 , end : 14 } ]
 
-const sumDurationStrings =
+const test =
     { type : 'code'
     , props : { heading , code , steps } }
 
 
-export  { sumDurationStrings }
+export  { test }

@@ -1,7 +1,6 @@
 import  { duration } from './duration'
-import  { evenlyDistributeTimeStrings } from './evenlyDistributeTimeStrings'
 import  { imperative } from './imperative'
-import  { sumTimeStrings } from './sumTimeStrings'
+import  { sumDurationStrings } from './sumDurationStrings'
 import  { utilsArray } from './utils-array'
 import  { utilsFunction } from './utils-function'
 import  { utilsLogic } from './utils-logic'
@@ -12,17 +11,21 @@ import  { utilsString } from './utils-string'
 
 
 const slides =
-    [ imperative
+    [ title
+    , purpose
+    , motivation
+    , imperative
+    , topDown
+    , refactor
+    , sumDurationStrings
+    , duration
     , utilsArray
     , utilsFunction
     , utilsLogic
     , utilsNumber
     , utilsObject
     , utilsProps
-    , utilsString
-    , sumTimeStrings
-    , duration
-    , evenlyDistributeTimeStrings ]
+    , utilsString ]
 
 
 export  { slides }
