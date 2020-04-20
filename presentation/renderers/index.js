@@ -1,4 +1,5 @@
 import  { renderCodeSlide } from './renderCodeSlide'
+import  { renderQuoteSlide } from './renderQuoteSlide'
 
 
 const renderSlide =
@@ -6,7 +7,8 @@ const renderSlide =
         renderersByType[ type ]( props , index )
 
 const renderersByType =
-    { code : renderCodeSlide }
+    { code : renderCodeSlide
+    , quote : renderQuoteSlide }
 
 
 export  { renderSlide }
