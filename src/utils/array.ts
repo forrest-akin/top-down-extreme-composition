@@ -1,7 +1,7 @@
 import  { applyTo , converge , identity , logIO , pipe , unary
         , Endo , Folder , Unary } from './function'
 import  { ifElse } from './logic'
-import  { $length } from './props'
+import  { _length } from './props'
 
 
 const concat : < A >( xs : A[] , ys : A[] ) => A[] =
@@ -35,9 +35,9 @@ const map : < A , B >( f : Unary< A , B > ) => Unary< A[] , B[] > =
 
 const padLeft : < A >( n : number , x : A ) => Endo< A[] > =
     ( maxLength , filler ) => xs =>
-        $length( xs ) < maxLength
+        _length( xs ) < maxLength
         ? concat(
-            repeat( filler , maxLength - $length( xs ) )
+            repeat( filler , maxLength - _length( xs ) )
             , xs )
         : xs
 
@@ -59,11 +59,10 @@ const tail : < A >( xs : A[] ) => A[] =
     ( [ , ...xs ] = [] ) => xs
 
 const unfold =
-    ( next , f , init : any = identity ) =>
-        pipe( unary( init )
-            , ifElse( next
-                , x => unfold( next , f )( f( x ) )
-                , identity ) )
+    ( next , f ) =>
+        ifElse( next
+            , x => unfold( next , f )( f( x ) )
+            , identity )
 
 
 export  { concat
