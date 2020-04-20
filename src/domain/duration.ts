@@ -1,26 +1,26 @@
 import  { head , map , join , padLeft as arrayPadLeft , reduce
         , replaceHead , repeat , tail , unfold } from '../utils/array'
-import  { identity , pipe
-        , Binary , CurriedEndo2 , Endo , Endo2 , Folder , Unary } from '../utils/function'
+import  { identity , pipe , unary
+        , Binary , Endo , Endo2 , Unary } from '../utils/function'
 import  { eq , ifElse } from '../utils/logic'
 import  { add , divmod , lt , mult } from '../utils/number'
-import  { $length } from '../utils/props'
+import  { _length } from '../utils/props'
 import  { split , padLeft as stringPadLeft } from '../utils/string'
 
 
 const lengthLt3 : Unary< number[] , boolean > =
-    pipe( $length
+    pipe( _length
         , lt( 3 ) )
 
-const unfoldSeconds : DurationUnfolder =
-    replaceHead( x => divmod( x , 60 ) ) as DurationUnfolder
+const divmodBy60 : Unary< number , [ number , number ] > =
+    x => divmod( x , 60 )
 
-const durationOfSeconds : Unary< number , Duration > =
-    unfold( lengthLt3
-        , unfoldSeconds
-        , Array.of )
+const durationOfSeconds : Unary< Seconds , Duration > =
+    pipe( unary( Array.of )
+        , unfold( lengthLt3
+            , replaceHead( divmodBy60 ) ) )
 
-const durationOfString : Unary< string , Duration > =
+const durationOfString : Unary< DurationString , Duration > =
     pipe( split( ':' )
         , map( Number )
         , arrayPadLeft( 3 , 0 ) )
@@ -34,48 +34,47 @@ const omitEmptyHours : Unary< Duration , Duration | MinSecDuration > =
         , tail
         , identity )
 
+const formatDurationPart =
+    pipe( String
+        , stringPadLeft( 2 , '0' ) )
+
 const durationToString : Unary< Duration , string > =
     pipe( omitEmptyHours
-        , map( pipe( String
-                , stringPadLeft( 2 , '0' ) ) )
+        , map( formatDurationPart )
         , join( ':' ) )
 
-const mult60 : Endo< number > =
+const multiply60 : Endo< number > =
     mult( 60 )
 
-const foldDurationToSeconds : Endo2< number > =
+const foldDurationParts : Endo2< number >=
     ( x , y ) =>
-        add( mult60( x ) , y )
+        add( multiply60( x ) , y )
 
-const durationToSeconds : Unary< Duration , number > =
-    reduce( foldDurationToSeconds , 0 )
+const durationToSeconds : Unary< Duration , Seconds > =
+    reduce( foldDurationParts , 0 )
 
-const durationStringToSeconds : Unary< string , number > =
+const durationStringToSeconds : Unary< DurationString , Seconds > =
     pipe( durationOfString
         , durationToSeconds )
 
-const foldTimeStringToSeconds : Folder< number , string > =
-    ( seconds , x ) =>
-        add( seconds , durationStringToSeconds( x ) )
+const foldDurationString : Binary< Seconds , DurationString , Seconds > = 
+    ( seconds , durationString ) =>
+        add( seconds , durationStringToSeconds( durationString ) )
 
-const durationStringsToSeconds : Unary< string[] , number > =
-    reduce( foldTimeStringToSeconds , 0 )
+const durationStringsToSeconds : Unary< DurationString[] , Seconds > =
+    reduce( foldDurationString , 0 )
 
-const secondsToDurationString : Unary< number , string > =
+const secondsToDurationString : Unary< Seconds , DurationString > =
     pipe( durationOfSeconds
         , durationToString )
 
-const distributeSeconds : Binary< number , number , number[] > =
-    ( seconds , n ) => (                            // using IIFE to create internal state through
-        ( [ q , r ] = divmod( seconds , n ) ) =>    // function parameters instead of variables
+const distributeSeconds : Binary< Seconds , number , Seconds[] > =
+    ( seconds , n ) => (                                // using IIFE to create internal state through
+        ( [ q , r ] = divmod( seconds , n ) ) =>        // function parameters instead of variables
             repeat( q , n )
-            .map( distributeRemainder( r ) )
-    )()
+            .map( x => add( x , r && ( --r , 1 ) ) )    // if r > 0, add 1 to q and decrement r
+    )()                                                 // if r = 0, add 0 to q
 
-const distributeRemainder : CurriedEndo2< number > =
-    r => q =>
-        add( q , r && ( --r , 1 ) ) // if r > 0, add 1 to q and decrement r
-                                    // if r = 0, add 0 to q
 
 export  { distributeSeconds
         , durationOfSeconds
@@ -87,18 +86,11 @@ export  { distributeSeconds
         , secondsToDurationString }
 
 
-type DurationUnfolder =
-    Unary< SecDuration , MinSecDuration >
-    | Unary< MinSecDuration , Duration >
-
-type Duration = Tuple3< Hours , Minutes , Seconds >
-type MinSecDuration = Tuple2< Minutes , Seconds >
-type SecDuration = Tuple1< Seconds >
+export type DurationString = string
+type Duration = [ Hours , Minutes , Seconds ]
+type MinSecDuration = [ Minutes , Seconds ]
+type SecDuration = [ Seconds ]
 
 type Hours = number
 type Minutes = number
-type Seconds = number
-
-type Tuple3< A , B , C > = [ A , B , C ]
-type Tuple2< A , B > = [ A , B ]
-type Tuple1< A > = [ A ]
+export type Seconds = number
