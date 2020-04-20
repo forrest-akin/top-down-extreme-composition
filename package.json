@@ -10,6 +10,7 @@
     "clean": "rimraf dist",
     "build": "tsc",
     "build-slides": "webpack",
+    "build-code": "node generateCodeForSlides.js",
     "start": "webpack-dev-server --hot",
     "test": "npm run build && ava --verbose"
   },
