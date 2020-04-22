@@ -1,4 +1,4 @@
-import  { utilsString as code } from '../code/utils-string'
+import  { utilsString as code } from '../../code/utils-string'
 
 
 const heading = 'utils/string'

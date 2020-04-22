@@ -1,4 +1,4 @@
-import  { utilsProps as code } from '../code/utils-props'
+import  { utilsProps as code } from '../../code/utils-props'
 
 
 const heading = 'utils/props'

@@ -1,4 +1,4 @@
-import  { utilsLogic as code } from '../code/utils-logic'
+import  { utilsLogic as code } from '../../code/utils-logic'
 
 
 const heading = 'utils/logic'

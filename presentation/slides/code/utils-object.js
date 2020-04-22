@@ -1,4 +1,4 @@
-import  { utilsObject as code } from '../code/utils-object'
+import  { utilsObject as code } from '../../code/utils-object'
 
 
 const heading = 'utils/object'

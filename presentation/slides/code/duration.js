@@ -1,5 +1,5 @@
-import  { domainDuation as code } from '../code/domain-duration'
-
+import  { domainDuration as code } from '../../code/domain-duration'
+import  { createCodeSlide } from '../utils'
 
 const heading = 'domain/duration'
 

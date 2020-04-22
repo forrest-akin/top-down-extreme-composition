@@ -17,6 +17,7 @@ import {
   Notes,
   OrderedList,
   Progress,
+  Quote,
   Slide,
   SpectacleLogo,
   Stepper,
@@ -105,6 +106,15 @@ int main()
 
 const Presentation = () => (
   <Deck theme={theme} template={template} transitionEffect="fade">
+    <Slide>
+      <FlexBox height="100%" flexDirection="column">
+        <Quote>
+          The essence of abstractions is preserving information that is relevant in a given context,
+          and forgetting information that is irrelevant in that context.
+        </Quote>
+        <Text>John Vogel Guttag</Text>
+      </FlexBox>
+    </Slide>
     <Slide>
       <FlexBox height="100%">
         <SpectacleLogo size={500} />

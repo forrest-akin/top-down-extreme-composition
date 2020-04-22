@@ -1,4 +1,4 @@
-import  { sumDurationStringsImperative as code } from '../code/sumDurationStrings-imperative'
+import  { sumDurationStringsImperative as code } from '../../code/sumDurationStrings-imperative'
 
 
 const heading = 'sumDurationStrings ( Imperative )'

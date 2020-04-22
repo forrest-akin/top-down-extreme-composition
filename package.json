@@ -12,7 +12,7 @@
     "build-slides": "webpack",
     "build-code": "node generateCodeForSlides.js",
     "start": "webpack-dev-server --hot",
-    "test": "npm run build && ava --verbose"
+    "test": "npm run build && ava --color --tap --verbose"
   },
   "engines": {
     "node": ">=10.18.0 <11 || >=12.14.0 <13 || >=13.5.0"

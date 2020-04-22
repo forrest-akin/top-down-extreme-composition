@@ -1,14 +1,20 @@
+import  { renderBulletSlide } from './renderBulletSlide'
 import  { renderCodeSlide } from './renderCodeSlide'
 import  { renderQuoteSlide } from './renderQuoteSlide'
+import  { renderSectionSlide } from './renderSectionSlide'
+import  { renderTitleSlide } from './renderTitleSlide'
 
 
 const renderSlide =
-    ( { type , props } , index ) =>
+    ( { slide , type , props } , index ) =>
         renderersByType[ type ]( props , index )
 
 const renderersByType =
-    { code : renderCodeSlide
-    , quote : renderQuoteSlide }
+    { bullet : renderBulletSlide
+    , code : renderCodeSlide
+    , quote : renderQuoteSlide
+    , section : renderSectionSlide
+    , title : renderTitleSlide }
 
 
 export  { renderSlide }

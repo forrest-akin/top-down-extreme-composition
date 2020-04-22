@@ -1,22 +1,47 @@
-import  { duration } from './duration'
-import  { imperative } from './imperative'
-import  { sumDurationStrings } from './sumDurationStrings'
-import  { utilsArray } from './utils-array'
-import  { utilsFunction } from './utils-function'
-import  { utilsLogic } from './utils-logic'
-import  { utilsNumber } from './utils-number'
-import  { utilsObject } from './utils-object'
-import  { utilsProps } from './utils-props'
-import  { utilsString } from './utils-string'
+import  { duration , imperative , sumDurationStrings , test , topDown
+        , utilsArray , utilsFunction , utilsLogic , utilsNumber , utilsObject
+        , utilsProps , utilsString } from './code'
+import  { habelson1 , habelson2 , habelson3 , jguttag1 , skell1 } from './quotes'
 
 
-const slides =
-    [ title
-    , purpose
-    , motivation
+export const slides =
+    [ { type : 'title' }
+    ,   { type : 'bullet'
+        , props :
+            { header : 'Purpose'
+            , bullets :
+                [ 'Introduce Top-Down Design'
+                , 'Introduce Compositional JS'
+                , 'Encourage you to have fun and experiment!' ] } }
+    ,   { type : 'bullet'
+        , props :
+            { header : 'Motivation'
+            , bullets :
+                [ 'Why high-level programming languages?'
+                ] } }
+    , habelson1
+    ,   { type : 'bullet'
+        , props :
+            { header : 'Motivation'
+            , startFrom : 1
+            , bullets :
+                [ 'Why high-level programming languages?'
+                , 'What is abstraction?' ] } }
+    , jguttag1
+    ,   { type : 'bullet'
+        , props :
+            { header : 'Motivation'
+            , startFrom : 2
+            , bullets :
+                [ 'Why high-level programming languages?'
+                , 'What is abstraction?'
+                , `What's the problem?` ] } }
+    , skell1
+    ,   { type : 'section'
+        , props : { section : 'sumDurationStrings' } }
     , imperative
+    , test
     , topDown
-    , refactor
     , sumDurationStrings
     , duration
     , utilsArray
@@ -26,6 +51,3 @@ const slides =
     , utilsObject
     , utilsProps
     , utilsString ]
-
-
-export  { slides }
