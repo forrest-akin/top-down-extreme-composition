@@ -1,7 +1,9 @@
 export const sumDurationStringsTest = `import  test from 'ava'
 import  { sumDurationStrings } from './sumDurationStrings'
 
-test( 'sums inputs'
+
+test( \`given a string of space-delimited mm:ss durations
+       returns a summed duration string\`
     , t => {
         // given
         const input = '12:32 34:01 15:23 9:27 55:22 25:56'
@@ -12,5 +14,4 @@ test( 'sums inputs'
         // then
         const expected = '02:32:41'
         t.is( actual , expected ) } )
-
 `

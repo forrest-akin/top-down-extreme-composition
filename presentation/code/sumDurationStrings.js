@@ -12,7 +12,4 @@ const sumDurationStrings : Unary< string , DurationString > =
     pipe( parse
         , durationStringsToSeconds
         , secondsToDurationString )
-
-
-export  { sumDurationStrings }
 `

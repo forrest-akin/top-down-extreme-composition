@@ -11,7 +11,7 @@ export function sumDurationStrings ( input ) {
     const secondsPart = sum % 60;
     const minutes = Math.floor( sum / 60 );
     const minutesPart = minutes % 60;
-    const hoursPart = Math.floor(minutes / 60);
+    const hoursPart = Math.floor( minutes / 60 );
     const duration = [ hoursPart , minutesPart , secondsPart ];
     const formattedDurationParts = [];
 

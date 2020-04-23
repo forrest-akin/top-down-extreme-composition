@@ -1,7 +1,7 @@
-import  { duration , imperative , sumDurationStrings , test , topDown
+import  { duration , imperative , compositional , test , topDown
         , utilsArray , utilsFunction , utilsLogic , utilsNumber , utilsObject
         , utilsProps , utilsString } from './code'
-import  { habelson1 , habelson2 , habelson3 , jguttag1 , skell1 } from './quotes'
+import  { aperlis1 , habelson1 , habelson2 , habelson3 , jguttag1 , skell1 } from './quotes'
 
 
 export const slides =
@@ -37,17 +37,26 @@ export const slides =
                 , 'What is abstraction?'
                 , `What's the problem?` ] } }
     , skell1
+    ,   { type : 'bullet'
+        , props :
+            { header : 'Motivation'
+            , startFrom : 3
+            , bullets :
+                [ 'Why high-level programming languages?'
+                , 'What is abstraction?'
+                , `What's the problem?` ] } }
     ,   { type : 'section'
         , props : { section : 'sumDurationStrings' } }
-    , imperative
     , test
+    , imperative
     , topDown
-    , sumDurationStrings
+    , compositional
     , duration
-    , utilsArray
-    , utilsFunction
-    , utilsLogic
-    , utilsNumber
-    , utilsObject
-    , utilsProps
-    , utilsString ]
+    , habelson3
+    ,   { type : 'bullet'
+        , props :
+            { header : 'Wrap Up'
+            , bullets :
+                [ 'Experiment with Compositional Top-Down Programming'
+                , 'Have fun!' ] } }
+    , aperlis1 ]

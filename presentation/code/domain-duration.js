@@ -1,7 +1,7 @@
-export const domainDuration = `import  { head , map , join , padLeft as arrayPadLeft , reduce
-        , replaceHead , tail , unfold } from '../utils/array'
-import  { identity , pipe , unary
-        , Binary , Endo , Endo2 , Unary } from '../utils/function'
+export const domainDuration = `import  { head , foldMap , join , map , mapFold
+        , padLeft as arrayPadLeft , replaceHead , tail , unfold } from '../utils/array'
+import  { flip , identity , pipe , unary
+        , Unary } from '../utils/function'
 import  { eq , ifElse } from '../utils/logic'
 import  { add , divmod , lt , mult } from '../utils/number'
 import  { _length } from '../utils/props'
@@ -13,7 +13,7 @@ const lengthLt3 : Unary< number[] , boolean > =
         , lt( 3 ) )
 
 const divmodBy60 : Unary< number , [ number , number ] > =
-    x => divmod( x , 60 )
+    flip( divmod , 60 )
 
 const durationOfSeconds : Unary< Seconds , Duration > =
     pipe( unary( Array.of )
@@ -43,26 +43,15 @@ const durationToString : Unary< Duration , string > =
         , map( formatDurationPart )
         , join( ':' ) )
 
-const multiply60 : Endo< number > =
-    mult( 60 )
-
-const foldDurationParts : Endo2< number > =
-    ( x , y ) =>
-        add( multiply60( x ) , y )
-
 const durationToSeconds : Unary< Duration , Seconds > =
-    reduce( foldDurationParts , 0 )
+    mapFold( add , 0 , mult( 60 ) )
 
 const durationStringToSeconds : Unary< DurationString , Seconds > =
     pipe( durationOfString
         , durationToSeconds )
 
-const foldDurationString : Binary< Seconds , DurationString , Seconds > = 
-    ( seconds , durationString ) =>
-        add( seconds , durationStringToSeconds( durationString ) )
-
 const durationStringsToSeconds : Unary< DurationString[] , Seconds > =
-    reduce( foldDurationString , 0 )
+    foldMap( add , 0 , foldDurationString )
 
 const secondsToDurationString : Unary< Seconds , DurationString > =
     pipe( durationOfSeconds
@@ -78,12 +67,12 @@ export  { durationOfSeconds
         , secondsToDurationString }
 
 
-export type DurationString = string
+type DurationString = string
 type Duration = [ Hours , Minutes , Seconds ]
 type MinSecDuration = [ Minutes , Seconds ]
 type SecDuration = [ Seconds ]
 
 type Hours = number
 type Minutes = number
-export type Seconds = number
+type Seconds = number
 `

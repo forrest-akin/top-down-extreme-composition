@@ -1,6 +1,6 @@
 export  { duration } from './duration'
 export  { imperative } from './imperative'
-export  { sumDurationStrings } from './sumDurationStrings'
+export  { compositional } from './compositional'
 export  { test } from './test'
 export  { topDown } from './topDown'
 export  { utilsArray } from './utils-array'

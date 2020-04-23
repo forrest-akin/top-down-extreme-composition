@@ -1,4 +1,5 @@
-export const sumDurationStringsImperative = `export function sumDurationStrings ( input ) {
+export const sumDurationStringsImperative = `// '12:32 34:01 15:23 9:27 55:22 25:56' => '02:32:41'
+function sumDurationStrings ( input ) {
     const durationStrings = input.split( ' ' );
     let sum = 0;
 
@@ -11,7 +12,7 @@ export const sumDurationStringsImperative = `export function sumDurationStrings 
     const secondsPart = sum % 60;
     const minutes = Math.floor( sum / 60 );
     const minutesPart = minutes % 60;
-    const hoursPart = Math.floor(minutes / 60);
+    const hoursPart = Math.floor( minutes / 60 );
     const duration = [ hoursPart , minutesPart , secondsPart ];
     const formattedDurationParts = [];
 
