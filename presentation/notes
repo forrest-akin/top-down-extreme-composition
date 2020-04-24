@@ -1,5 +1,32 @@
 JS.LA PRESENTATION CONSIDERATIONS
 
+
+top-down starts from the end
+start presentation from the present
+present is compositional top-down programming
+quick demo of top-down compositional style
+I didn't always code like this, here's the experiences that lead me to this style
+*flash back*
+when I first started programming, I would start from the entry point and slowly work my way to the end
+there were no tests
+
+
+
+
+- ethos / pathos / logos
+- find the most emotional triggers
+- thin line between jaded and insightful
+- The Passionate Compositional Top-Down Programmer
+- my journey pursuing my programming passions despite lack of opportunity / common interest at work
+- why all the job hopping?
+- it's rare to find people/teams that really care about code quality
+- priority is to grow
+- attracted to software industry for the love of learning, but many teams don't focus on learning
+- insanity is when you do something over and over and expect something different
+- big functions/classes; wow! this is hard to understand - let's refactor! the rest of the team ignores because we need to "move fast"
+- extreme tech debt can be maddening and seriously impact mental health
+
+
 What did you want?
     I wanted expressive, declarative code with consistent reasonability and safe refactorability
 
