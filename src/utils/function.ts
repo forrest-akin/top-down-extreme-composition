@@ -25,9 +25,9 @@ const converge =
         pipe( juxt( ...fs )
             , apply( f ) )
 
-const flip : < A , B , C >( f : Curried2< A , B , C > ) => Curried2< B , A , C > =
-    f => x => y =>
-        f( y )( x )
+const flip : < A , B , C >( f : Binary< A , B , C > , x : B ) => Unary< A , C > =
+    ( f , x ) => y =>
+        f( y , x )
 
 const identity : < A >( x : A ) => A =
     x => x

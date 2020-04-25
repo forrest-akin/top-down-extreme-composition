@@ -1,6 +1,7 @@
-import  { foldMap } from './array'
+import  { foldMap , mapFold } from './array'
 import  { always , identity , juxt , pipe
-        , Binary , Curried2 , CurriedEndo2 , Endo , Endo2 , Unary } from './function'
+        , Binary , Curried2 , CurriedEndo2 , Endo , Endo2
+        , Unary } from './function'
 
 
 const add : Endo2< number > =
@@ -32,15 +33,18 @@ const divmod : Binary< number , number , NumberTuple2 > =
     juxt( intdiv
         , modulo ) as Binary< number , number , NumberTuple2 >
 
-const mult : CurriedEndo2< number > =
+const multiply : CurriedEndo2< number > =
     x => y =>
         x * y
 
-const sumFoldMap : < A >( f : ( x : A ) => number ) => ( xs : A[] ) => number =
+const mapSum : < A >( f : ( x : A ) => number ) => ( xs : A[] ) => number =
+    mapFold( add , always( 0 ) )
+
+const sumMap : < A >( f : ( x : A ) => number ) => ( xs : A[] ) => number =
     foldMap( add , always( 0 ) )
 
 const sum : Unary< number[] , number > =
-    sumFoldMap( identity )
+    sumMap( identity )
 
 
 export  { add
@@ -50,10 +54,11 @@ export  { add
         , increment
         , intdiv
         , lt
+        , mapSum
         , modulo
-        , mult
+        , multiply
         , sum
-        , sumFoldMap }
+        , sumMap }
 
 
 type NumberTuple2 = [ number , number ]

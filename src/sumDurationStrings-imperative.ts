@@ -1,4 +1,4 @@
-export function sumDurationStrings ( input ) {
+function sumDurationStrings ( input ) {
     const durationStrings = input.split( ' ' );
     let sum = 0;
 
@@ -23,3 +23,6 @@ export function sumDurationStrings ( input ) {
 
     return formattedDurationParts.join( ':' );
 }
+
+
+export  { sumDurationStrings }

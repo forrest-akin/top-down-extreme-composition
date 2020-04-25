@@ -12,11 +12,20 @@ const fill : < A >( x : A , xs : A[] ) => A[] =
     ( filler , xs ) =>
         xs.fill( filler )
 
-const foldMap =
-    ( append , empty ) => f =>
+const mapFoldMap =
+    ( append , empty ) => f => g =>
         reduce(
-            ( x , y ) => append( x , f( y ) )
+            ( x , y ) => append( f( x ) , g( y ) )
             , empty() )
+
+const mapFold =
+    ( append , empty ) =>
+        pipe( mapFoldMap( append , empty )
+            , applyTo( identity ) )
+
+const foldMap =
+    pipe( mapFoldMap
+        , applyTo( identity ) )
 
 const fold =
     pipe( foldMap
@@ -72,6 +81,8 @@ export  { concat
         , head
         , join
         , map
+        , mapFold
+        , mapFoldMap
         , padLeft
         , reduce
         , repeat

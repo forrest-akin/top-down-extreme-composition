@@ -1,5 +1,5 @@
 import  test from 'ava'
-import  { sumDurationStrings } from './sumDurationStrings'
+const { sumDurationStrings } = require( './sumDurationStrings-compositional' )
 
 
 test( `given a string of space-delimited mm:ss durations

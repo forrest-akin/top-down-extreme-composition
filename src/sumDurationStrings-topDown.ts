@@ -1,4 +1,4 @@
-export const sumDurationStrings = // String -> DurationString
+const sumDurationStrings = // String -> DurationString
     ( input ) => {
         const durationStrings = parse( input )
         const seconds = durationsStringsToSeconds( durationStrings )
@@ -64,3 +64,6 @@ const formatDurationPart = // Number -> String
         const formattedDurationPart = String( durationPart ).padStart( 2 , '0' )
         return formattedDurationPart
     }
+
+
+export  { sumDurationStrings }
