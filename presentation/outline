@@ -1,0 +1,80 @@
+Top-Down Design: Extreme Composition Edition
+
+COLD OPEN: "I want to show you some code..."
+    - what I like about this:
+        - compositionality
+            - every function is defined entirely by other functions
+            - nothing ad-hoc is ever introduced; only a combination of what already exists
+
+        - less hackable
+            - without function blocks you're less likely to keep adding lines to a function
+            - encouraged to build things that are smaller, simpler, and composable
+        
+        - emphasis on language (SICP: Stratified Design)
+            - human language is extraordinarily composable and one of our most powerful tools for creating abstractions
+            - the encoded representation is perfectly aligned with our high-level mental model of the problem space
+
+    - objections:
+        - "so many functions to walk through!"
+        - "how do I debug?"
+        - "what about performance?"
+        - not going to talk about any of that today
+    
+    - what I'd like to talk about today
+        - I didn't always code like this
+        - the properties I value most in software are heavily influenced by 1000s of experiences
+        - I want to share a couple moments in the past couple years that had a huge impact on me
+
+PRICE SERVICE: Legacy Nightmare
+    - solo full-stack project
+        - consolidate all pricing logic into a new price service
+        - implement date-based pricing
+
+    - problems
+        - poorly defined requirements
+        - ad-hoc pricing logic was scattered throughout the entirety of the system (front and back-end)
+        - 5+ year old NodeJS system in which quality maintenance had never been prioritized
+        - new to the company (i.e. little domain knowledge and unfamiliar codebase)
+
+    - challenges
+        - confession: I didn't always write tests
+            - resulted in a lot of regressions during the early stages of the project
+            - started writing tests and catching bugs sooner
+        
+        - perfect storm of tech debt
+            - definition of legacy code: untested code
+                - most likely because of being hard to test
+                - very dangerous to modify code without feedback saying something broke
+            
+            - gargantuan functions impossible to understand
+            - non-transparent side-effects
+            - excessive mixing of concerns
+            - in-house framework magic
+
+        - long solo project
+            - constantly running into new issues which severely delayed project
+            - several all-nighters as I just wanted it to be over
+            - very lonely
+
+    - response
+        - searching to understand how code becomes this way
+            - heavily influenced by org culture/values
+            - learning about values and seeing that my own were misaligned with this company helped be less resentful
+
+        - searching for techniques to maintain quality as code evolves
+            - digging deeper into FP
+            - finding an online community since I didn't work with anyone that shared similar interests
+        
+        - search for companies that prioritized quality
+
+HELLO CJ AFFILIATE: Top-Down Revelation
+    - I now had a decent idea of how to define quality, but lacked an effective methodology that helped me stay productive
+    - top-down design to the rescue
+        - constant IDE feedback; machine tells me what to do next, I focus on abstraction
+        - end result similar to what I would've normallly done, but in way less time PLUS full test coverage
+
+WRAP UP
+    - what was your initial reaction to the code from the beginning? anger? confusion? amusement?
+    - has your opinion changed?
+    - we often see code or listen to developers and judge them at face value based on our own experiences
+    - instead, try engaging with the individual and their stories behind the code; they'll feel heard, and you just might learn something!

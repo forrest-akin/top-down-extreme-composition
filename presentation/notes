@@ -1,32 +1,6 @@
 JS.LA PRESENTATION CONSIDERATIONS
 
 
-top-down starts from the end
-start presentation from the present
-present is compositional top-down programming
-quick demo of top-down compositional style
-I didn't always code like this, here's the experiences that lead me to this style
-*flash back*
-when I first started programming, I would start from the entry point and slowly work my way to the end
-there were no tests
-
-
-
-
-- ethos / pathos / logos
-- find the most emotional triggers
-- thin line between jaded and insightful
-- The Passionate Compositional Top-Down Programmer
-- my journey pursuing my programming passions despite lack of opportunity / common interest at work
-- why all the job hopping?
-- it's rare to find people/teams that really care about code quality
-- priority is to grow
-- attracted to software industry for the love of learning, but many teams don't focus on learning
-- insanity is when you do something over and over and expect something different
-- big functions/classes; wow! this is hard to understand - let's refactor! the rest of the team ignores because we need to "move fast"
-- extreme tech debt can be maddening and seriously impact mental health
-
-
 What did you want?
     I wanted expressive, declarative code with consistent reasonability and safe refactorability
 
@@ -139,39 +113,24 @@ what can be done to maintain expressivity?
 
 welcome to top-down design: extreme composition edition
 
+top-down starts from the end
+start presentation from the present
+present is compositional top-down programming
+quick demo of top-down compositional style
+I didn't always code like this, here's the experiences that lead me to this style
+*flash back*
+when I first started programming, I would start from the entry point and slowly work my way to the end
+there were no tests
 
-
-
-Top-Down Design: Extreme Composition Edition
-
-PRESENTATION STRUCTURE
-
-SET THE STAGE (5-10min)
-    what is the purpose of high-level programming languages?
-        - clearly communicating intent with abstractions
-    what is abstraction?
-        - amplifying the relevant while hiding the irrelevant
-    what is an example of a good abstraction?
-        - pure functions
-    what can be done to maintain expressivity?
-        - top-down composition
-
-LIVE CODE DEMO (10-15min)
-    constraints liberate
-        - no function blocks
-        - no variables/assignments
-    establish base set of vocabulary
-        - expressive generic utils for built-ins
-    isolate domain from application
-        - enforce a strict boundary between domain and application logic
-        - lift responsibility to the caller to sanitize inputs and serialize outputs
-    pipe all the things
-        - maximizing compositionality minimizes ad-hoc glue logic
-        - prioritize composability in implementation
-        - currying improves composability
-
-WRAPPING UP (5min)
-    Consider experimenting with a compositional, top-down approach.
-    Don't trust anyone! Listen to everyone and consider everything with an open mind, but then test what you hear to judge for yourself.
-    Push ideas to their extremes to truly understand the limits and depths of their utility.
-    Look beyond your personal realm of familiarity to foster a well-rounded understanding of and appreciation for the many approaches to building software.
+- ethos / pathos / logos
+- find the most emotional triggers
+- thin line between jaded and insightful
+- The Passionate Compositional Top-Down Programmer
+- my journey pursuing my programming passions despite lack of opportunity / common interest at work
+- why all the job hopping?
+- it's rare to find people/teams that really care about code quality
+- priority is to grow
+- attracted to software industry for the love of learning, but many teams don't focus on learning
+- insanity is when you do something over and over and expect something different
+- big functions/classes; wow! this is hard to understand - let's refactor! the rest of the team ignores because we need to "move fast"
+- extreme tech debt can be maddening and seriously impact mental health
