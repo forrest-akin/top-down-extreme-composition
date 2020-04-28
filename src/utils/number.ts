@@ -47,6 +47,9 @@ const sum : Unary< number[] , number > =
     sumMap( identity )
 
 
+type NumberTuple2 = [ number , number ]
+
+
 export  { add
         , div
         , divmod
@@ -58,7 +61,6 @@ export  { add
         , modulo
         , multiply
         , sum
-        , sumMap }
-
-
-type NumberTuple2 = [ number , number ]
+        , sumMap
+        
+        , NumberTuple2 }

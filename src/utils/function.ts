@@ -76,6 +76,47 @@ const unary =
         f( x )
 
 
+interface Predicate< A > {
+    ( x : A ) : boolean
+}
+
+interface Folder< A , B > {
+    ( y : A , x : B ) : A
+}
+
+interface Unary< A , B > {
+    ( x : A ) : B
+}
+
+interface Binary< A , B , C > {
+    ( x : A , y : B ) : C
+}
+
+interface Ternary< A , B , C , D > {
+    ( x : A , y : B , z : C ) : D
+}
+
+interface Curried2< A , B , C > {
+    ( x : A ) : Unary< B , C >
+}
+
+interface Curried3< A , B , C , D > {
+    ( x : A ) : Curried2< B , C , D >
+}
+
+interface CurriedEndo2< A > {
+    ( x : A ): Endo< A >
+}
+
+interface Endo< A > {
+    ( x : A ) : A
+}
+
+interface Endo2< A > {
+    ( x : A , y : A ) : A
+}
+
+
 export  { always
         , apply
         , applyTo
@@ -93,45 +134,15 @@ export  { always
         , second
         , spread
         , tap
-        , unary }
-
-
-export interface Predicate< A > {
-    ( x : A ) : boolean
-}
-
-export interface Folder< A , B > {
-    ( y : A , x : B ) : A
-}
-
-export interface Unary< A , B > {
-    ( x : A ) : B
-}
-
-export interface Binary< A , B , C > {
-    ( x : A , y : B ) : C
-}
-
-export interface Ternary< A , B , C , D > {
-    ( x : A , y : B , z : C ) : D
-}
-
-export interface Curried2< A , B , C > {
-    ( x : A ) : Unary< B , C >
-}
-
-export interface Curried3< A , B , C , D > {
-    ( x : A ) : Curried2< B , C , D >
-}
-
-export interface Endo< A > {
-    ( x : A ) : A
-}
-
-export interface Endo2< A > {
-    ( x : A , y : A ) : A
-}
-
-export interface CurriedEndo2< A > {
-    ( x : A ): Endo< A >
-}
+        , unary
+        
+        , Binary
+        , Curried2
+        , Curried3
+        , CurriedEndo2
+        , Endo
+        , Endo2
+        , Folder
+        , Predicate
+        , Ternary
+        , Unary }

@@ -16,9 +16,8 @@ const divmodBy60 : Unary< number , [ number , number ] > =
     flip( divmod , 60 )
 
 const durationOfSeconds : Unary< Seconds , Duration > =
-    unary(
-    pipe( Array.of
-        , unfold( lengthLt3 , replaceHead( divmodBy60 ) ) ) )
+    pipe( unary( Array.of )
+        , unfold( lengthLt3 , replaceHead( divmodBy60 ) ) )
 
 const durationOfString : Unary< DurationString , Duration > =
     pipe( split( ':' )
@@ -56,6 +55,15 @@ const secondsToDurationString : Unary< Seconds , DurationString > =
         , durationToString )
 
 
+type Duration = [ Hours , Minutes , Seconds ]
+type MinSecDuration = [ Minutes , Seconds ]
+type SecDuration = [ Seconds ]
+type Hours = number
+type Minutes = number
+type Seconds = number
+type DurationString = string
+
+
 export  { durationOfSeconds
         , durationOfString
         , durationStringToSeconds
@@ -71,12 +79,3 @@ export  { durationOfSeconds
         , Minutes
         , SecDuration
         , Seconds }
-
-
-type Duration = [ Hours , Minutes , Seconds ]
-type MinSecDuration = [ Minutes , Seconds ]
-type SecDuration = [ Seconds ]
-type Hours = number
-type Minutes = number
-type Seconds = number
-type DurationString = string

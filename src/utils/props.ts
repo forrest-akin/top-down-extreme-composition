@@ -5,9 +5,11 @@ const _length : < S extends Lengthwise >( x : S ) => number =
     prop( 'length' )
 
 
-export  { _length }
-
-
-export interface Lengthwise {
+interface Lengthwise {
     length : number
 }
+
+
+export  { _length
+        
+        , Lengthwise }
