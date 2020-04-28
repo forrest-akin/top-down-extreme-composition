@@ -1,4 +1,4 @@
-Top-Down Design: Extreme Composition Edition
+Code Crucible: Fueling a refinement of values
 
 COLD OPEN: "I want to show you some code..."
     - what I like about this:
@@ -9,7 +9,7 @@ COLD OPEN: "I want to show you some code..."
         - less hackable
             - without function blocks you're less likely to keep adding lines to a function
             - encouraged to build things that are smaller, simpler, and composable
-        
+
         - emphasis on language (SICP: Stratified Design)
             - human language is extraordinarily composable and one of our most powerful tools for creating abstractions
             - the encoded representation is perfectly aligned with our high-level mental model of the problem space
@@ -19,15 +19,16 @@ COLD OPEN: "I want to show you some code..."
         - "how do I debug?"
         - "what about performance?"
         - not going to talk about any of that today
-    
-    - what I'd like to talk about today
-        - I didn't always code like this
-        - the properties I value most in software are heavily influenced by 1000s of experiences
-        - I want to share a couple moments in the past couple years that had a huge impact on me
+
+    - what I'd like to talk about tonight
+        - I didn't always code like this; the values behind it have been slowly refined by many experiences over the years
+        - code is not simply good or bad. there are a myriad of properties that software exhibits and our values inform which ones we choose to prioritize
+        - I never expected to grapple so much with values as a software engineer
+        - I want to share a recent experience that had a huge impact on me
 
 PRICE SERVICE: Legacy Nightmare
     - solo full-stack project
-        - consolidate all pricing logic into a new price service
+        - consolidate pricing logic into a new price service
         - implement date-based pricing
 
     - problems
@@ -38,43 +39,44 @@ PRICE SERVICE: Legacy Nightmare
 
     - challenges
         - confession: I didn't always write tests
+            - much slower due to all the extra mental processing
             - resulted in a lot of regressions during the early stages of the project
             - started writing tests and catching bugs sooner
-        
+
         - perfect storm of tech debt
             - definition of legacy code: untested code
                 - most likely because of being hard to test
                 - very dangerous to modify code without feedback saying something broke
-            
+
             - gargantuan functions impossible to understand
             - non-transparent side-effects
-            - excessive mixing of concerns
+            - rampant mixing of concerns
             - in-house framework magic
 
         - long solo project
             - constantly running into new issues which severely delayed project
             - several all-nighters as I just wanted it to be over
-            - very lonely
+            - very lonely; working near people but not with people
 
     - response
-        - searching to understand how code becomes this way
+        - search to understand how code becomes this way
             - heavily influenced by org culture/values
             - learning about values and seeing that my own were misaligned with this company helped be less resentful
 
-        - searching for techniques to maintain quality as code evolves
+        - search for techniques to maintain quality as code evolves
             - digging deeper into FP
+                - books (professor frisby's)
+                - podcasts (magic read-a-long, corecursive)
+                - heroes (brian lonsdorf, runar bjarnson, bartosz milewski)
             - finding an online community since I didn't work with anyone that shared similar interests
-        
-        - search for companies that prioritized quality
 
-HELLO CJ AFFILIATE: Top-Down Revelation
-    - I now had a decent idea of how to define quality, but lacked an effective methodology that helped me stay productive
-    - top-down design to the rescue
-        - constant IDE feedback; machine tells me what to do next, I focus on abstraction
-        - end result similar to what I would've normallly done, but in way less time PLUS full test coverage
+        - search for companies that prioritized quality
+            - hello CJ Affiliate!
+                - I now had a decent idea of how to define quality, but lacked an effective methodology that helped me stay productive
+                - top-down design to the rescue
+                    - constant IDE feedback; machine tells me what to do next, I focus on abstraction
+                    - end result similar to what I would've normally done, but in way less time PLUS full test coverage
 
 WRAP UP
-    - what was your initial reaction to the code from the beginning? anger? confusion? amusement?
-    - has your opinion changed?
-    - we often see code or listen to developers and judge them at face value based on our own experiences
-    - instead, try engaging with the individual and their stories behind the code; they'll feel heard, and you just might learn something!
+    - work isn't always what we hope; sometimes it's the worst and tries us in ways we never expected, but we can use these experiences as fuel for our own self-discovery and growth
+    - don't go it alone; find a community that shares your values and will support you in digging into your passions
