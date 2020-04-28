@@ -1,13 +1,19 @@
 const createSlide =
-    type => props => (
-        { type
-        , props } )
+    type => ( props = {} ) => (
+        { type , props } )
 
-const createCodeSlide = createSlide( 'quote' )
-
-const createQuoteSlide = createSlide( 'quote' )
+const BulletSlide = createSlide( 'bullet' )
+const CodeSlide = createSlide( 'code' )
+const ImageSlide = createSlide( 'image' )
+const QuoteSlide = createSlide( 'quote' )
+const SectionSlide = createSlide( 'section' )
+const TitleSlide = createSlide( 'title' )
 
         
 export  { createSlide
-        , createCodeSlide
-        , createQuoteSlide }
+        , BulletSlide
+        , CodeSlide
+        , ImageSlide
+        , QuoteSlide
+        , SectionSlide
+        , TitleSlide }

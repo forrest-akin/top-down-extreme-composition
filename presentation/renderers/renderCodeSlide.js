@@ -3,8 +3,8 @@ import  { CodePane , Heading , Slide , Stepper } from 'spectacle'
 
 
 const renderCodeSlide =
-    ( { init = [] , heading , code , steps } , index ) => (
-        <Slide backgroundImage="linear-gradient(to bottom, #2a2139 75%, #34294f)" transitionEffect="slide" key={ index }>
+    ( { init = [] , heading = '' , code = '' , steps = [] } , index ) => (
+        <Slide backgroundImage="linear-gradient(to bottom, #2a2139 75%, #34294f)" transitionEffect="fade" key={ `code-${ index }` }>
             <Heading fontSize="h3"> { heading } </Heading>
             <Stepper defaultValue={ init } values={ steps }>
                 { ( { autoFillHeight = true , start , end , size = 18 } ) => (
@@ -17,7 +17,8 @@ const renderCodeSlide =
                         language={ 'typescript' }
                     >
                         { code }
-                    </CodePane> ) }
+                    </CodePane> )
+                }
             </Stepper>
         </Slide> )
 

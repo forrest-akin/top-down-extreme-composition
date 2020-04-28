@@ -2,15 +2,9 @@ import  { sumDurationStringsTest as code } from '../../code/test-sumDurationStri
 
 
 const heading = 'sumDurationStrings Test'
-
 const init = { start : 1 , end : 17 }
-
-const steps =
-    [ ]
-
-const test =
-    { type : 'code'
-    , props : { heading , code , steps } }
+const steps = []
+const test = { code , steps }
 
 
 export  { test }

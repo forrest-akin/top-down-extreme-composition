@@ -2,10 +2,11 @@ import  React from 'react'
 import  { Box , Deck , FlexBox , FullScreen , Progress } from 'spectacle'
 
 import  { renderSlide } from './renderers'
+import  { slides } from './slides'
 
 
 const Presentation =
-    ( { slides } ) => (
+    () => (
         <Deck theme={ theme } template={ template } transitionEffect="fade">
             { slides.map( renderSlide ) }
         </Deck> )
@@ -20,10 +21,13 @@ const template =
     () => (
         <FlexBox justifyContent="space-between" position="absolute" bottom={ 0 } width={ 1 }>
             <Box padding="0 1em">
-                <FullScreen /> </Box>
+                <FullScreen />
+            </Box>
             
             <Box padding="1em"> 
-                <Progress /> </Box> </FlexBox> )
+                <Progress />
+            </Box>
+        </FlexBox> )
 
 
 export  { Presentation }
