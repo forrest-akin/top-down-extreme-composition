@@ -14,19 +14,17 @@ COLD OPEN: "I want to show you some code..."
             - human language is extraordinarily composable and one of our most powerful tools for creating abstractions
             - the encoded representation is perfectly aligned with our high-level mental model of the problem space
 
-    - objections:
-        - "so many functions to walk through!"
-        - "how do I debug?"
-        - "what about performance?"
-        - not going to talk about any of that today
+    - I didn't always code like this:
+        - imperative beginning
+        - well-factored recently
+        - now more structure and compositional
 
     - what I'd like to talk about tonight
-        - I didn't always code like this; the values behind it have been slowly refined by many experiences over the years
-        - code is not simply good or bad. there are a myriad of properties that software exhibits and our values inform which ones we choose to prioritize
+        - code isn't simply good or bad. we juggle a myriad of concerns when writing software and our values inform which ones we choose to prioritize
         - I never expected to grapple so much with values as a software engineer
         - I want to share a recent experience that had a huge impact on me
 
-PRICE SERVICE: Legacy Nightmare
+DATE-BASED PRICING
     - solo full-stack project
         - consolidate pricing logic into a new price service
         - implement date-based pricing
