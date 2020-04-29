@@ -9,20 +9,20 @@ const slides =
     , SectionSlide( { section : `I want to show you some code.` , fontSize : 90 } )
     , CodeSlide( compositional )
     , CodeSlide( duration )
-    , BulletSlide(
-        { header : 'But...'
-        , bullets :
-            [ '"...so many functions to walk through!"'
-            , '"...how do I even debug this?"'
-            , '"...what about performance?!"'
-            , `this ain't that!` ] } )
+    // , BulletSlide(
+    //     { header : 'But...'
+    //     , bullets :
+    //         [ '"...so many functions to walk through!"'
+    //         , '"...how do I even debug this?"'
+    //         , '"...what about performance?!"'
+    //         , `this ain't that!` ] } )
     , SectionSlide( { section : `I didn't always write code like this.` , fontSize : 90 } )
     , CodeSlide( imperative )
     , CodeSlide( topDown )
     , CodeSlide( compositional )
     , SectionSlide( { section : `!( Bad → Good )` } )
     , SectionSlide( { section : `( Values , Value ) → Values` , fontSize : 110 } )
-    , ImageSlide( { src : 'https://i.imgur.com/Ht8slfp.png' } )
+    // , ImageSlide( { src : 'https://i.imgur.com/Ht8slfp.png' } )
     , ImageSlide( { src : 'https://i.imgur.com/NCRWGUV.png' } )
     , TitleSlide()
     , BulletSlide(
@@ -56,7 +56,7 @@ const slides =
             [ `Legacy code === untested code you didn't write`
             , 'Behemoth functions'
             , 'Side-effects everywhere'
-            , `Magic` ] } )
+            , `In-house framework magic` ] } )
     , BulletSlide(
         { header : 'Long Solo Project'
         , headerSize : 100
@@ -92,7 +92,7 @@ const slides =
             , 'Hello, CJ!' ] } )
     , SectionSlide( { section : `I've found more of who I am and who I want to be.` , fontSize : 60 } )
     , BulletSlide(
-        { header : 'Takeaways'
+        { header : 'In Closing'
         , headerSize : 100
         , bullets :
             [ `Sometimes work is the worst`

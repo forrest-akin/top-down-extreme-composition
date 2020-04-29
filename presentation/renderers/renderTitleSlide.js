@@ -9,7 +9,7 @@ const renderTitleSlide =
                 <Heading margin="0px" color="white" fontSize="150px" style={ { textShadow : "-2px -2px 8px magenta , 2px 2px 8px cyan" } }>
                     Code Crucible
                 </Heading>
-                <Heading margin="0px" color="primary" fontSize="h2" fontStyle="italic" style={ { textShadow : "0px 0px 4px white" } }>
+                <Heading margin="0px" color="white" fontSize="h2" fontStyle="italic" style={ { textShadow : "0px 0px 4px white" } }>
                     Fueling a refinement of values
                 </Heading>
                 <Heading margin="0px 32px" color="primary" fontSize="h3">
