@@ -18,61 +18,79 @@ function to compose 3 other functions in order to satisfy my requirements
 
 the way pipe works is it takes any number of functions as arguments and returns a new function
 
-when that new function is called it passes the arguments it receives to the first function given to pipe
+when that new function is called it passes the arguments it receives to the first function that was given to pipe
 then the result of that function is passed as the input to the next function
 what you finally get back is the result from the last function
+
 since it's difficult to tell what this function would do in vanilla JavaScript
+without seeing what arguments it takes and what it does with them
 I'm using a generic TypeScript interface I made called Unary parameterized by an input and output type
 to communicate this is a function that takes a string argument and returns a DurationString
-this function is an application of the Duration domain sitting between it and the outside world
+
+this function is an application of the Duration domain sitting between the domain and the outside world
 Let's take a peek into the Duration domain
 ->
-this is the Duration domain, a collection of composable functions to facilitate
+this is the Duration domain, a collection of functions to facilitate
 interaction with data representing the concept of a duration
-and still no function bodies or arguments anywhere
+and still no function bodies or arguments anywhere!
+
 I tend to avoid creating function bodies because without them, I'm way less
 likely to keep adding lines to a function as new requirements surface;
 everything becomes way less hackable!
+
 Instead, I try to consider what composition of functions would accomplish the task at hand;
 and that's exactly what we find here!
 every function is defined completely in terms of other simpler functions without
 adding any ad-hoc handling of data; it's compositional!
+
 I really love this because it enables me to concisely communicate at a high level WHAT
-will be done without getting bogged down with the details of HOW it will be done
-it's declarative! even the types are declarative!
+will be done without getting bogged down by the details of HOW it will be done
+it's declarative!
+
+even the types are declarative!
 instead of saying this function takes a string and returns a number, I've made type aliases
 to communicate what those types actually represent in this domain
 this isn't just any number and any string; the number represents an amount of seconds,
-and the DurationString represents a string with specific formatting requirements
-Now, I know this isn't anything like the style of javascript most of you are probably used to
-even my formatting conventions are unusual for JavaScript
-I've developed my own set of formatting rules that recursively places each expression
+and the string represents a DurationString with specific formatting requirements
+
+Now, I know this isn't anything like the style of javascript a lot of people are used to
+even my formatting conventions are pretty unusual for JavaScript
+
+I've developed my own set of formatting rules that recursively place each expression
 inside a nice little box such that each part of the expression is as close to the rest
 of the expression as possible
+
 I'm leading with the comma so the first character on each line immediately communicates
 if this line is a continuation of the previous
-there's a lot more space than usual so every token can easily be taken with less risk of getting lost
+
+there's a lot more space than is typical so every token can easily be taken in
+with less risk of getting lost in the code
+
 I try to leverage every tool I possibly can to expressively communicate my intent
 ->
 but I didn't always write code like this.
 When I started I might have written something like this
 ->
-this is the same function as the original
-but instead it's one big function with the entire implementation
+this function accomplishes the same task as the original
+but instead it's just one big function for the entire implementation
 one problem - one function!
 and more recently I might've done something like this
 ->
-similarly factored, but lacking the structure and compositionality of the original example
+I've divided the problem into a bunch of simpler sub-problems
+it's similarly factored, but lacking the structure and compositionality of the original example
 ->
 but I'm not showing you this to demonstrate my progression from writing bad code to good;
 code isn't simply good or bad.
+
 as software engineers, we constantly juggle a myriad of concerns when writing code
-and it's our values that inform which ones we choose to prioritize
+and I believe it's our values that inform which ones we choose to prioritize
+
 and that's exactly what this code represents to me
 ->
 an accumulation of values over the years, many of which were a result of some
 of the worst experiences in my career
-and tonight I'd like to share one of those experiences with you
+
+so tonight I'd like to share one of those experiences with you
 I would've called this is a coding horror, but that name was already taken
 ->
 so instead, I'll be presenting my Code Crucible
@@ -87,17 +105,22 @@ because they decided to throw me head first into the deep end
 * creating a new service responsible for all pricing logic
 * and implement date-based pricing, giving users the ability to assign start
 and/or end dates for prices on products and pricesheets
+
 little did I know, there were problems
 ->
 problems I was mostly clueless about, but slowly and painfully discovered as the project progressed
 * naturally, the requirements were extremely vague, offering little to nothing
 in terms of acceptance criteria
+
 * the pricing logic I was meant to consolidate into my new service was scattered
 across the entire system; ad-hoc pricing logic was all over the place on the front-end and the back-end
+
 * which kind of made sense because this was a 5+ year old NodeJS system in which
 quality maintenance had rarely been prioritized
+
 * and when you combine all of that with the fact that I was new to the company
 and had little domain knowledge or familiarity with the codebase
+
 this was the perfect storm - I was definitely set up to fail on this project.
 here's a peek into some of the
 ->
@@ -105,7 +128,7 @@ challenges I experienced
 ->
 Testing
 * I didn't always write tests...
-and that definitely bit me in this project
+and that definitely bit me at the beginning of this project
 * it made me a lot slower due to all the mental processing I was constantly doing,
 * and it resulted in a lot of regressions in the early stages
 * but luckily I finally caved and started writing tests;
@@ -117,6 +140,7 @@ this term gets thrown around pretty loosely, but it absolutely applies in this c
 * many functions had grown beyond 500 lines
 * with side-effects around every corner
 * to top it off there was a nice helping of in-house framework magic
+
 I think it would be a miracle if any human was able to reason about this system
 finally
 ->
@@ -127,7 +151,9 @@ it took at least twice as long as planned to complete - probably closer to three
 this of course didn't help my mental well being
 * it was an extremely lonely experience
 I was working near people but not with them - I desperately wanted some form of collaboration
+
 I grew resentful for having such an awful project dumped on me
+
 it seemed like a hopeless situation
 ->
 so I went searching for answers
@@ -135,33 +161,44 @@ so I went searching for answers
 * how does code become like this??
 who do I blame?
 well it turns out no one wrote this code in malice; anger, perhaps, but not malice
+
 * I started learning about the role values played in software from people like
 Brian Cantrell and Steve Klabnik and it all started to add up
+
 what I was experiencing was Conway's Law - the idea that a software system's structure
 mirrors the organization that built it
+
 there were deep-rooted issues in my organization that contributed to development
 being carried out in a haphazard frenzy.
-the developers that wrote the code were simply responding to the pressures placed on them
-by the organization and leadership
+
+the developers that wrote the code weren't bad developers
+they were simply responding to the pressures placed on them by the organization and leadership
+
 it was really no wonder that after over 5 years this is what the system had become
 ->
 Understanding this helped me be less resentful
-because now I was able to empathize with the developers instead of blame them
+because I was able to empathize with the developers instead of blame them
 ->
 but there was no way I was going to change this organization
 * so what could I do to prevent code from becoming like this?
 I'd been dabbling with some functional ideas for a couple years
+
 * but this really sent me down the rabbit hole
 because functional programming is all about applying techniques and constraints in order
-to maintain reasonability in software as it evolves - something I was desperately missing
+to maintain reasonability in software as it evolves
+- something I was desperately missing
+
 so I spent tons of my free time finding resources to learn more and took every opportunity
 to apply what I was learning to the project.
+
 I read Brian Lonsdorf's Mostly Adequate Guide to Functional Programming
 and Eric Elliot's Composing Software
+
 I found new podcasts like Magic Readalong and Corecursive.
 I didn't even understand half of the stuff they talked about in Magic Readalong
 It just brought me a lot of joy to listen to Brian Lonsdorf and Hardy Jones joke around
 and nerd out about functional programming
+
 * I found new heroes:
 Brian Lonsdorf for functional programming in JavaScript,
 Runar Bjarnson for showing me how the constraints of functional programming are liberating,
@@ -174,18 +211,23 @@ but I was still all alone in this project
 * so I went looking for community in whatever way I could
 I created a recurring Tech Talks meeting at work to provide a platform for
 people to share whatever was interesting to them
+
 I got more involved with js.la, signing up as a mentor for the mentorship program
 as well as signing up to be a presenter
+
 I joined the functional-programming Slack team
 I started attending the santa monica haskell meetup
+
 and I was lucky enough to have a couple of friends willing to nerd out with me on functional topics
+
 eventually I realized I would be much happier at a company that shared the values
 I was discovering in myself
 * so I searched for companies that had explicitly listed values for quality and functional programming
 I only found two and before I knew it I was signing an offer with my current employer,
+
 * CJ Affiliate
-in a lot of ways it's the company I've been trying to find since 2016;
-I get to work with people that are seriously committed to their craft and I have a ton to learn from.
+in a lot of ways it's the company I've been trying to find since I moved to LA in 2016;
+I get to work with people that are committed to their craft and I have a ton to learn from.
 I don't think I would have ended up at CJ if this experience hadn't forced me
 to dig deeper into what I valued
 I haven't arrived; I still have a long road ahead of me in this career
@@ -198,6 +240,11 @@ sometimes it's the worst and tries us in ways we never expected,
 but we can use these experiences as fuel for our own self-discovery and growth
 but don't go it alone; find a community that shares your values and will
 support you in digging into your passions
+->
+here's a list of the resources I mentioned
+and if you want to see any of the code I showed or used to make this presentation
+you can find it on my github here
+->
 thank you so much JS.LA - good night!
 ->
 END PRESENTATION
