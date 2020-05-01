@@ -1,14 +1,4 @@
-export const domainDuration = `import  { head , join , map , padLeft as arrayPadLeft , replaceHead , tail , unfold
-        } from '../utils/array'
-import  { flip , identity , pipe , unary
-        , Unary } from '../utils/function'
-import  { eq , ifElse } from '../utils/logic'
-import  { divmod , lt , mapSum , multiply , sumMap } from '../utils/number'
-import  { _length } from '../utils/props'
-import  { padLeft as stringPadLeft , split } from '../utils/string'
-
-
-const lengthLt3 : Unary< number[] , boolean > =
+export const domainDuration = `const lengthLt3 : Unary< number[] , boolean > =
     pipe( _length
         , lt( 3 ) )
 

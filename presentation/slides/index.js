@@ -1,28 +1,20 @@
 import  { duration , imperative , compositional , test , topDown , utilsArray , utilsFunction
         , utilsLogic , utilsNumber , utilsObject , utilsProps , utilsString } from './code'
 import  { aperlis1 , habelson1 , habelson2 , habelson3 , jguttag1 , skell1 } from './quotes'
-import  { BulletSlide , CodeSlide , ImageSlide , QuoteSlide , SectionSlide , TitleSlide } from './utils'
+import  { BulletSlide , CodeSlide , ContactSlide , HelloSlide , ImageSlide , QuoteSlide , SectionSlide , TitleSlide } from './utils'
 
 
 const slides =
-    [ SectionSlide( { section : `Hello, JS.LA!` } )
+    [ HelloSlide()
     , SectionSlide( { section : `I want to show you some code.` , fontSize : 90 } )
     , CodeSlide( compositional )
     , CodeSlide( duration )
-    // , BulletSlide(
-    //     { header : 'But...'
-    //     , bullets :
-    //         [ '"...so many functions to walk through!"'
-    //         , '"...how do I even debug this?"'
-    //         , '"...what about performance?!"'
-    //         , `this ain't that!` ] } )
     , SectionSlide( { section : `I didn't always write code like this.` , fontSize : 90 } )
     , CodeSlide( imperative )
     , CodeSlide( topDown )
     , CodeSlide( compositional )
     , SectionSlide( { section : `!( Bad → Good )` } )
     , SectionSlide( { section : `( Values , Value ) → Values` , fontSize : 110 } )
-    // , ImageSlide( { src : 'https://i.imgur.com/Ht8slfp.png' } )
     , ImageSlide( { src : 'https://i.imgur.com/NCRWGUV.png' } )
     , TitleSlide()
     , BulletSlide(
@@ -98,7 +90,24 @@ const slides =
             [ `Sometimes work is the worst`
             , 'Use that energy to fuel your own explorations'
             , `It's dangerous to go alone!` ] } )
-    , TitleSlide() ]
+    , BulletSlide(
+        { header : 'Resources'
+        , headerSize : 100
+        , bulletSize : 27
+        , showAll : true
+        , bullets :
+            [ `Platform as a Reflection of Values - Bryan Cantrill : vimeo.com/230142234`
+            , 'How Rust Views Tradeoffs - Steve Klabnik : youtu.be/2ajos-0OWts'
+            , 'Oh Composable World! - Brian Lonsdorf : youtu.be/SfWR3dKnFIo'
+            , 'Constraints Liberate, Liberties Constrain - Rúnar Bjarnason : youtu.be/GqmsQeSzMdw'
+            , 'A Crash Course in Category Theory - Bartosz Milewski : youtu.be/JH_Ou17_zyU'
+            , 'PFMAGTFP - Brian Lonsdorf : mostly-adequate.gitbooks.io/mostly-adequate-guide'
+            , 'Composing Software - Eric Elliott : bit.ly/3bUpmZY'
+            , `Magic Read Along : magicreadalong.com`
+            , `CoRecursive : corecursive.com`
+            ] } )
+    , SectionSlide( { section : `github.com/forrest-akin/top-down-extreme-composition` , fontSize : 50 } )
+    , ContactSlide() ]
 
 
 export  { slides }

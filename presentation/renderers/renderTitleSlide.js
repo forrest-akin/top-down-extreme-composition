@@ -1,5 +1,5 @@
 import  React from 'react'
-import  { FlexBox , Heading , Slide } from 'spectacle'
+import  { FlexBox , Heading , Image , Slide } from 'spectacle'
 
 
 const renderTitleSlide =
@@ -15,8 +15,8 @@ const renderTitleSlide =
                 <Heading margin="0px 32px" color="primary" fontSize="h3">
                     Forrest Akin
                 </Heading>
-                <Heading margin="0px 32px" color="primary" fontSize="h3">
-                    JS.LA 420
+                <Heading margin="0px 32px" color="primary" fontSize="50px">
+                    <Image src={ 'https://js.la/images/jsla_152.png' } width={ 42 } /> 420
                 </Heading>
             </FlexBox>
         </Slide> )
